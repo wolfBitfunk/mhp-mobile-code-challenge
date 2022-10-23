@@ -33,21 +33,23 @@ internal class IceAndFireApiTest {
     @Test
     fun `SHOULD use correct url WHEN calling httpClient`() = runTest {
         httpClientMock.isResultSuccess = false
+        val page = 9
+        val pageSize = 15
 
-        testSubject.loadHouses()
-        httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/houses")
+        testSubject.loadHouses(page = page, pageSize = pageSize)
+        httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/houses?page=$page&pageSize=$pageSize")
 
         testSubject.loadHouse(1)
         httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/houses/1")
 
-        testSubject.loadCharacters()
-        httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/characters")
+        testSubject.loadCharacters(page = page, pageSize = pageSize)
+        httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/characters?page=$page&pageSize=$pageSize")
 
         testSubject.loadCharacter(1)
         httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/characters/1")
 
-        testSubject.loadBooks()
-        httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/books")
+        testSubject.loadBooks(page = page, pageSize = pageSize)
+        httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/books?page=$page&pageSize=$pageSize")
 
         testSubject.loadBook(1)
         httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/books/1")
@@ -57,24 +59,28 @@ internal class IceAndFireApiTest {
     fun `SHOULD return failure WHEN httpClient has failure`() = runTest {
         // GIVEN
         httpClientMock.isResultSuccess = false
+        val page = 8
+        val pageSize = 16
 
         // WHEN/THEN
-        testSubject.loadHouses() isOfType Failure::class
+        testSubject.loadHouses(page = page, pageSize = pageSize) isOfType Failure::class
         testSubject.loadHouse(1) isOfType Failure::class
 
-        testSubject.loadCharacters() isOfType Failure::class
+        testSubject.loadCharacters(page = page, pageSize = pageSize) isOfType Failure::class
         testSubject.loadCharacter(1) isOfType Failure::class
 
-        testSubject.loadBooks() isOfType Failure::class
+        testSubject.loadBooks(page = page, pageSize = pageSize) isOfType Failure::class
         testSubject.loadBook(1) isOfType Failure::class
     }
 
     @Test
     fun `SHOULD use correct json WHEN calling jsonParser`() = runTest {
         setupDefaultJsonParserAnswers()
+        val page = 7
+        val pageSize = 13
 
         httpClientMock.answerGet = { "loadHouses" }
-        testSubject.loadHouses()
+        testSubject.loadHouses(page = page, pageSize = pageSize)
         jsonParserMock.recordedJson mustEqual "loadHouses"
 
         httpClientMock.answerGet = { "loadHouse" }
@@ -82,7 +88,7 @@ internal class IceAndFireApiTest {
         jsonParserMock.recordedJson mustEqual "loadHouse"
 
         httpClientMock.answerGet = { "loadCharacters" }
-        testSubject.loadCharacters()
+        testSubject.loadCharacters(page = page, pageSize = pageSize)
         jsonParserMock.recordedJson mustEqual "loadCharacters"
 
         httpClientMock.answerGet = { "loadCharacter" }
@@ -90,7 +96,7 @@ internal class IceAndFireApiTest {
         jsonParserMock.recordedJson mustEqual "loadCharacter"
 
         httpClientMock.answerGet = { "loadBooks" }
-        testSubject.loadBooks()
+        testSubject.loadBooks(page = page, pageSize = pageSize)
         jsonParserMock.recordedJson mustEqual "loadBooks"
 
         httpClientMock.answerGet = { "loadBook" }
@@ -103,15 +109,17 @@ internal class IceAndFireApiTest {
         // GIVEN
         httpClientMock.answerGet = { "success" }
         jsonParserMock.isResultSuccess = false
+        val page = 6
+        val pageSize = 11
 
         // WHEN/THEN
-        testSubject.loadHouses() isOfType Failure::class
+        testSubject.loadHouses(page = page, pageSize = pageSize) isOfType Failure::class
         testSubject.loadHouse(1) isOfType Failure::class
 
-        testSubject.loadCharacters() isOfType Failure::class
+        testSubject.loadCharacters(page = page, pageSize = pageSize) isOfType Failure::class
         testSubject.loadCharacter(1) isOfType Failure::class
 
-        testSubject.loadBooks() isOfType Failure::class
+        testSubject.loadBooks(page = page, pageSize = pageSize) isOfType Failure::class
         testSubject.loadBook(1) isOfType Failure::class
     }
 
@@ -120,9 +128,11 @@ internal class IceAndFireApiTest {
         // GIVEN
         httpClientMock.answerGet = { "success" }
         jsonParserMock.answerParseHouses = { listOf(HouseResponseTestFixture.EXAMPLE) }
+        val page = 3
+        val pageSize = 9
 
         // WHEN
-        val result = testSubject.loadHouses()
+        val result = testSubject.loadHouses(page = page, pageSize = pageSize)
 
         // THEN
         result isOfType Success::class
@@ -150,9 +160,11 @@ internal class IceAndFireApiTest {
         // GIVEN
         httpClientMock.answerGet = { "success" }
         jsonParserMock.answerParseCharacters = { listOf(CharacterResponseTestFixture.EXAMPLE) }
+        val page = 0
+        val pageSize = 99
 
         // WHEN
-        val result = testSubject.loadCharacters()
+        val result = testSubject.loadCharacters(page = page, pageSize = pageSize)
 
         // THEN
         result isOfType Success::class

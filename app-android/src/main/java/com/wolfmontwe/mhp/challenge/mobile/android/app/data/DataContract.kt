@@ -31,13 +31,13 @@ interface DataContract {
     interface Network {
 
         interface IceAndFireApi {
-            suspend fun loadHouses(): Result<List<HouseResponse>>
+            suspend fun loadHouses(page: Int, pageSize: Int): Result<List<HouseResponse>>
             suspend fun loadHouse(id: Int): Result<HouseResponse>
 
-            suspend fun loadCharacters(): Result<List<CharacterResponse>>
+            suspend fun loadCharacters(page: Int, pageSize: Int): Result<List<CharacterResponse>>
             suspend fun loadCharacter(id: Int): Result<CharacterResponse>
 
-            suspend fun loadBooks(): Result<List<BookResponse>>
+            suspend fun loadBooks(page: Int, pageSize: Int): Result<List<BookResponse>>
             suspend fun loadBook(id: Int): Result<BookResponse>
         }
 
