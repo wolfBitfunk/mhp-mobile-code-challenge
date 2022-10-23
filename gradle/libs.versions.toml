@@ -40,6 +40,7 @@ androidx-compose-material3 = { module = "androidx.compose.material3:material3", 
 androidx-compose-activity = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation-compose"}
 
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" , version.ref = "kotlin"}
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 
 test-jUnit = { module = "junit:junit", version.ref = "test-jUnit" }
@@ -54,6 +55,7 @@ androidx-test-compose-manifest = { module = "androidx.compose.ui:ui-test-manifes
 android-application = { id = "com.android.application", version.ref = "android-gradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "android-gradlePlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
 [bundles]
 app-android = [
     "androidx-core",
@@ -73,6 +75,7 @@ app-android-test = [
     "test-jUnit",
     "test-kotlin",
     "test-kotlin-jUnit",
+    "kotlin-reflect",
 ]
 app-android-androidTest = [
     "androidx-test-junit",
