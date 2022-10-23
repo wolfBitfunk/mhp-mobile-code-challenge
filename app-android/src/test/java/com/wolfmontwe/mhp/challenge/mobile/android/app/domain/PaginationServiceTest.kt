@@ -45,7 +45,6 @@ class PaginationServiceTest {
 
     @Test
     fun `SHOULD continuously increase page number`() {
-        testSubject.nextPage() mustEqual 0
         testSubject.nextPage() mustEqual 1
         testSubject.nextPage() mustEqual 2
         testSubject.nextPage() mustEqual 3
@@ -53,10 +52,10 @@ class PaginationServiceTest {
     }
 
     @Test
-    fun `SHOULD reset page number to 0`() {
+    fun `SHOULD reset page number to 1`() {
         testSubject.nextPage()
         testSubject.nextPage()
         testSubject.reset()
-        testSubject.nextPage() mustEqual 0
+        testSubject.nextPage() mustEqual 1
     }
 }

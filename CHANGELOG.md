@@ -28,6 +28,10 @@ See [changeset](https://github.com/wmontwe/mhp-mobile-challenge-android/compare/
 
 - Identifier id to value to prevent id.id concatenation
 
+### Fixed
+
+- Fix pagination starting from 1 and not 0
+
 ## [0.0.1](https://github.com/wmontwe/mhp-mobile-challenge-android/releases/tag/v0.0.1)
 
 Initial project configuration
