@@ -5,6 +5,7 @@
 package com.wolfmontwe.mhp.challenge.mobile.android.app.data.network
 
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.DataContract.Network
+import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.HouseResponseTestFixture
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Failure
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Success
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
@@ -57,7 +58,7 @@ internal class JsonParserTest {
     @Test
     fun `SHOULD parse house json completely`() {
         // GIVEN
-        val json = JSON_HOUSE
+        val json = HouseResponseTestFixture.JSON_COMPLETE_TEST_EXAMPLE
 
         // WHEN
         val result = testSubject.parseHouse(json)
@@ -65,28 +66,27 @@ internal class JsonParserTest {
         // THEN
         result isOfType Success::class
         result as Success
-        result.data.url mustEqual "testHouseUrl"
-        result.data.name mustEqual "testHouseName"
-        result.data.region mustEqual "testHouseRegion"
-        result.data.coatOfArms mustEqual "testHouseCoatOfArms"
-        result.data.words mustEqual "testHouseWords"
-        result.data.titles mustEqual listOf("testHouseTitle1", "testHouseTitle2", "testHouseTitle3")
-        result.data.seats mustEqual listOf("testHouseSeat1", "testHouseSeat2")
-        result.data.currentLord mustEqual "testHouseCurrentLord"
-        result.data.heir mustEqual "testHouseHeir"
-        result.data.overlord mustEqual "testHouseOverlord"
-        result.data.founded mustEqual "testHouseFounded"
-        result.data.founder mustEqual "testHouseFounder"
-        result.data.diedOut mustEqual "testHouseDietOut"
-        result.data.ancestralWeapons mustEqual listOf("testHouseAncestralWeapon1", "testHouseAncestralWeapon2")
-        result.data.cadetBranches mustEqual listOf("testHouseCadetBranch1")
-        result.data.swornMembers mustEqual listOf("testHouseSwornMember1", "testHouseSwornMember2")
+        result.data mustEqual HouseResponseTestFixture.COMPLETE_TEST_EXAMPLE
+    }
+
+    @Test
+    fun `SHOULD parse house json`() {
+        // GIVEN
+        val json = HouseResponseTestFixture.JSON_EXAMPLE
+
+        // WHEN
+        val result = testSubject.parseHouse(json)
+
+        // THEN
+        result isOfType Success::class
+        result as Success
+        result.data mustEqual HouseResponseTestFixture.EXAMPLE
     }
 
     @Test
     fun `SHOULD parse list of houses json completely`() {
         // GIVEN
-        val json = "[$JSON_HOUSE,$JSON_HOUSE]"
+        val json = HouseResponseTestFixture.JSON_LIST_OF_COMPLETE_TEST_EXAMPLES
 
         // WHEN
         val result = testSubject.parseHouses(json)
@@ -141,42 +141,6 @@ internal class JsonParserTest {
     }
 
     companion object {
-        val JSON_HOUSE = """
-            {
-            	"url": "testHouseUrl",
-            	"name": "testHouseName",
-            	"region": "testHouseRegion",
-            	"coatOfArms": "testHouseCoatOfArms",
-            	"words": "testHouseWords",
-            	"titles": [
-            		"testHouseTitle1",
-            		"testHouseTitle2",
-            		"testHouseTitle3"
-            	],
-            	"seats": [
-            		"testHouseSeat1",
-            		"testHouseSeat2"
-            	],
-            	"currentLord": "testHouseCurrentLord",
-            	"heir": "testHouseHeir",
-            	"overlord": "testHouseOverlord",
-            	"founded": "testHouseFounded",
-            	"founder": "testHouseFounder",
-            	"diedOut": "testHouseDietOut",
-            	"ancestralWeapons": [
-            		"testHouseAncestralWeapon1",
-            		"testHouseAncestralWeapon2"
-            	],
-            	"cadetBranches": [
-            		"testHouseCadetBranch1"
-            	],
-            	"swornMembers": [
-            		"testHouseSwornMember1",
-            		"testHouseSwornMember2"
-            	]
-            }
-        """.trimIndent()
-
         val JSON_CHARACTER = """
             {
             	"url": "testCharacterUrl",
