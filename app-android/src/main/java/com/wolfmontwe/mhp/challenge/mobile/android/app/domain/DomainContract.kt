@@ -4,12 +4,13 @@
 
 package com.wolfmontwe.mhp.challenge.mobile.android.app.domain
 
+import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.Identifier
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
 
 interface DomainContract {
 
     interface Entity {
-        val id: String
+        val id: Identifier
     }
 
     interface UseCase {

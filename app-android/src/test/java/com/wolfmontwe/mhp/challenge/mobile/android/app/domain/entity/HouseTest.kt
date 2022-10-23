@@ -11,8 +11,13 @@ import kotlin.test.Test
 
 class HouseTest {
 
+    private val testSubject = House(
+        id = Identifier("123"),
+        name = "HouseName"
+    )
+
     @Test
     fun `SHOULD implement contract`() {
-        House("123") isOfType DomainContract.Entity::class
+        testSubject isOfType DomainContract.Entity::class
     }
 }
