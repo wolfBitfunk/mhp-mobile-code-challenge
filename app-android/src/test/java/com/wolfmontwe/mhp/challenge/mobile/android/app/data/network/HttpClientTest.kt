@@ -35,7 +35,7 @@ internal class HttpClientTest {
         testConnectionFactory.payload = "success"
 
         // WHEN
-        val result = testSubject.get(url)
+        testSubject.get(url)
 
         // THEN
         testConnectionFactory.connection?.url mustEqual url

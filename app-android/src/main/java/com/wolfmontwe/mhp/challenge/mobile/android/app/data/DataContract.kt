@@ -4,6 +4,8 @@
 
 package com.wolfmontwe.mhp.challenge.mobile.android.app.data
 
+import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.BookResponse
+import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.CharacterResponse
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.HouseResponse
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
@@ -23,10 +25,21 @@ interface DataContract {
     interface Mapper {
         interface Houses {
             fun mapTo(from: HouseResponse): House
-		}
-	}
+        }
+    }
 
     interface Network {
+
+        interface IceAndFireApi {
+            suspend fun loadHouses(page: Int, pageSize: Int): Result<List<HouseResponse>>
+            suspend fun loadHouse(id: Int): Result<HouseResponse>
+
+            suspend fun loadCharacters(page: Int, pageSize: Int): Result<List<CharacterResponse>>
+            suspend fun loadCharacter(id: Int): Result<CharacterResponse>
+
+            suspend fun loadBooks(page: Int, pageSize: Int): Result<List<BookResponse>>
+            suspend fun loadBook(id: Int): Result<BookResponse>
+        }
 
         interface HttpClient {
             suspend fun get(url: URL): Result<String>
@@ -34,6 +47,15 @@ interface DataContract {
 
         interface HttpsUrlConnectionFactory {
             fun createGetRequest(url: URL): HttpsURLConnection
+        }
+
+        interface JsonParser {
+            fun parseHouses(json: String): Result<List<HouseResponse>>
+            fun parseHouse(json: String): Result<HouseResponse>
+            fun parseCharacters(json: String): Result<List<CharacterResponse>>
+            fun parseCharacter(json: String): Result<CharacterResponse>
+            fun parseBooks(json: String): Result<List<BookResponse>>
+            fun parseBook(json: String): Result<BookResponse>
         }
     }
 }
