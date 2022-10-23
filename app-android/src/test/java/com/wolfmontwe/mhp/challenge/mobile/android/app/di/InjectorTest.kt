@@ -39,6 +39,14 @@ class InjectorTest {
         testSubject.domain::class.members.map { it.name } mustEqual DOMAIN_ALLOWED_MEMBER_NAMES
     }
 
+    @Test
+    fun `SHOULD return multiple distinct member instances for use case`() {
+        assertNotSame(
+            illegal = testSubject.domain.useCaseGetHousesPaginated,
+            actual = testSubject.domain.useCaseGetHousesPaginated,
+        )
+    }
+
     private companion object {
         val ROOT_ALLOWED_MEMBER_NAMES = listOf(
             "domain",
