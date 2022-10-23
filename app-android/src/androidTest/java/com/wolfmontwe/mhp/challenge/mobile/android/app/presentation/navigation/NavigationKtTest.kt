@@ -5,20 +5,16 @@
 package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.navigation
 
 import androidx.compose.ui.test.ExperimentalTestApi
-import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.runComposeUiTest
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.HouseDestination
+import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.BaseComposeTest
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
-import org.junit.Rule
 import org.junit.Test
 
 @OptIn(ExperimentalTestApi::class)
-class NavigationKtTest {
-
-    @get:Rule
-    val composeTestRule = createComposeRule()
+class NavigationKtTest : BaseComposeTest() {
 
     @Test
     fun should_navigate_to_house_list_when_root_destination_house_is_default() = runComposeUiTest {
