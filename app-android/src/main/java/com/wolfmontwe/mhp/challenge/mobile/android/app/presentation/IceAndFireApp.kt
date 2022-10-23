@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.navigation.Navigation
-import com.wolfmontwe.mhp.challenge.mobile.android.app.ui.theme.MainTheme
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTheme
 
 @Composable
 fun IceAndFireApp() {

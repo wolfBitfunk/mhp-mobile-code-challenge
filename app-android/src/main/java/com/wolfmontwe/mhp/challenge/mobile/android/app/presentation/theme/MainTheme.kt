@@ -2,7 +2,7 @@
  * Copyright (c) 2022. Wolf-Martell Montwé
  */
 
-package com.wolfmontwe.mhp.challenge.mobile.android.app.ui.theme
+package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme
 
 import android.app.Activity
 import android.os.Build
@@ -15,11 +15,8 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
-import androidx.compose.ui.platform.LocalWindowInfo
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
@@ -62,7 +59,7 @@ fun MainTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = MainTypography,
         content = content
     )
 }
