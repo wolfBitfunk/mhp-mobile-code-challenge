@@ -55,7 +55,7 @@ fun ComposeUiTest.setThemedScreenshotContent(
     content: @Composable () -> Unit
 ) {
     setContent {
-        MainTheme {
+        MainTheme(darkTheme = false) {
             Surface(
                 color = MainThemeColor.debug
             ) {
