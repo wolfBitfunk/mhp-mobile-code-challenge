@@ -9,6 +9,7 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.Cha
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.HouseResponse
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
+import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.Identifier
 import javax.net.ssl.HttpsURLConnection
 import java.net.URL
 
@@ -23,6 +24,10 @@ interface DataContract {
     }
 
     interface Mapper {
+        interface Id {
+            fun mapToDomain(from: String): Result<Identifier>
+        }
+
         interface Houses {
             fun mapToDomain(from: HouseResponse): Result<House>
             fun mapToDomain(from: List<HouseResponse>): Result<List<House>>

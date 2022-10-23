@@ -19,3 +19,13 @@ sealed interface Result<out R> {
 
 fun <T> Result<T>.isSuccess() = this is Success
 fun <T> Result<T>.isFailure() = this is Failure
+
+fun <IN, OUT> Result<IN>.map(
+    success: (Success<IN>) -> OUT,
+    failure: (Failure) -> OUT
+): OUT {
+    return when (this) {
+        is Success -> success(this)
+        is Failure -> failure(this)
+    }
+}
