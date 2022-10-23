@@ -79,7 +79,7 @@ class CardItemKtTest {
 
         // Then
         button.assertIsDisplayed()
-            .assertScreenshotMatches("atom", testTagName)
+            .assertScreenshotMatches("organism", testTagName)
     }
 
     companion object {
