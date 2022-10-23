@@ -42,6 +42,7 @@ androidx-compose-navigation = { module = "androidx.navigation:navigation-compose
 
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" , version.ref = "kotlin"}
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 
 test-jUnit = { module = "junit:junit", version.ref = "test-jUnit" }
 test-kotlin = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -76,10 +77,12 @@ app-android-test = [
     "test-kotlin",
     "test-kotlin-jUnit",
     "kotlin-reflect",
+    "kotlinx-coroutines-test",
 ]
 app-android-androidTest = [
     "androidx-test-junit",
     "androidx-test-compose-junit",
     "test-kotlin",
     "test-kotlin-jUnit",
+    "kotlinx-coroutines-test",
 ]
