@@ -12,6 +12,10 @@ This project adheres to [semantic versioning](http://semver.org/spec/v2.0.0.html
 
 See [changeset](https://github.com/wmontwe/mhp-mobile-challenge-android/compare/v0.0.1...main)
 
+### Added
+
+- App navigation using Compose Navigation
+
 ## [0.0.1](https://github.com/wmontwe/mhp-mobile-challenge-android/releases/tag/v0.0.1)
 
 Initial project configuration
