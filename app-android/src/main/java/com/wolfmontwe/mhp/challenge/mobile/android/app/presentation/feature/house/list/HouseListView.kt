@@ -9,13 +9,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.atom.PrimaryTextButton
 
 @Composable
 fun HouseListView(openDetailView: (Int) -> Unit) {
     Column {
         Text(text = "HouseListView")
-        Button(onClick = { openDetailView(123) }) {
-            Text(text = "Navigate to detail")
-        }
+        PrimaryTextButton(text = "Navigate to detail", onClick = { openDetailView(123) })
     }
 }
