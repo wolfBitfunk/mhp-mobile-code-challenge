@@ -25,20 +25,20 @@ interface DataContract {
     interface Mapper {
         interface Houses {
             fun mapTo(from: HouseResponse): House
-		}
-	}
+        }
+    }
 
     interface Network {
 
         interface IceAndFireApi {
-            suspend fun loadHouses(): List<HouseResponse>
-            suspend fun loadHouse(id: Int): HouseResponse
+            suspend fun loadHouses(): Result<List<HouseResponse>>
+            suspend fun loadHouse(id: Int): Result<HouseResponse>
 
-            suspend fun loadCharacters(): List<CharacterResponse>
-            suspend fun loadCharacter(id: Int): CharacterResponse
+            suspend fun loadCharacters(): Result<List<CharacterResponse>>
+            suspend fun loadCharacter(id: Int): Result<CharacterResponse>
 
-            suspend fun loadBooks(): List<BookResponse>
-            suspend fun loadBook(id: Int): BookResponse
+            suspend fun loadBooks(): Result<List<BookResponse>>
+            suspend fun loadBook(id: Int): Result<BookResponse>
         }
 
         interface HttpClient {
