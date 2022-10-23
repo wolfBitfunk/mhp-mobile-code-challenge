@@ -5,6 +5,7 @@
 package com.wolfmontwe.mhp.challenge.mobile.android.app.data.network
 
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.DataContract.Network
+import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.BookResponseTestFixture
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.CharacterResponseTestFixture
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.HouseResponseTestFixture
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Failure
@@ -133,6 +134,48 @@ internal class JsonParserTest {
 
         // WHEN
         val result = testSubject.parseCharacters(json)
+
+        // THEN
+        result isOfType Success::class
+        result as Success
+        result.data.size mustEqual 2
+    }
+
+    @Test
+    fun `SHOULD parse book json completely`() {
+        // GIVEN
+        val json = BookResponseTestFixture.JSON_COMPLETE_TEST_EXAMPLE
+
+        // WHEN
+        val result = testSubject.parseBook(json)
+
+        // THEN
+        result isOfType Success::class
+        result as Success
+        result.data mustEqual BookResponseTestFixture.COMPLETE_TEST_EXAMPLE
+    }
+
+    @Test
+    fun `SHOULD parse book json`() {
+        // GIVEN
+        val json = BookResponseTestFixture.JSON_EXAMPLE
+
+        // WHEN
+        val result = testSubject.parseBook(json)
+
+        // THEN
+        result isOfType Success::class
+        result as Success
+        result.data mustEqual BookResponseTestFixture.EXAMPLE
+    }
+
+    @Test
+    fun `SHOULD parse list of books json completely`() {
+        // GIVEN
+        val json = BookResponseTestFixture.JSON_LIST_OF_COMPLETE_TEST_EXAMPLES
+
+        // WHEN
+        val result = testSubject.parseBooks(json)
 
         // THEN
         result isOfType Success::class

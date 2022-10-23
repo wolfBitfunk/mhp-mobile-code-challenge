@@ -94,7 +94,19 @@ class JsonParser : Network.JsonParser {
     private fun mapToCharacters(jsonArray: JSONArray): List<CharacterResponse> =
         mapToEntityList(jsonArray) { mapToCharacter(it) }
 
-    private fun mapToBook(jsonObject: JSONObject): BookResponse = TODO("Not yet implemented")
+    private fun mapToBook(jsonObject: JSONObject): BookResponse = BookResponse(
+        url = jsonObject.getString("url"),
+        name = jsonObject.getString("name"),
+        isbn = jsonObject.getString("isbn"),
+        authors = mapToStringList(jsonObject.getJSONArray("authors")),
+        numberOfPages = jsonObject.getInt("numberOfPages"),
+        publisher = jsonObject.getString("publisher"),
+        country = jsonObject.getString("country"),
+        mediaType = jsonObject.getString("mediaType"),
+        released = jsonObject.getString("released"),
+        characters = mapToStringList(jsonObject.getJSONArray("characters")),
+        povCharacters = mapToStringList(jsonObject.getJSONArray("povCharacters")),
+    )
 
     private fun mapToBooks(jsonArray: JSONArray): List<BookResponse> =
         mapToEntityList(jsonArray) { mapToBook(it) }
