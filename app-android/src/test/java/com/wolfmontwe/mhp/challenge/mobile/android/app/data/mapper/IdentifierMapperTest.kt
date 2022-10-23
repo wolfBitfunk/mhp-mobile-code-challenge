@@ -33,14 +33,14 @@ class IdentifierMapperTest {
     @Test
     fun `SHOULD map url to identifier`() {
         (testSubject.mapToDomain("https://example.com/148") as Success)
-            .data mustEqual Identifier(id = "148")
+            .data mustEqual Identifier(value = "148")
         (testSubject.mapToDomain("https://example.com/path/15") as Success)
-            .data mustEqual Identifier(id = "15")
+            .data mustEqual Identifier(value = "15")
         (testSubject.mapToDomain("https://example.com/path/abc/5") as Success)
-            .data mustEqual Identifier(id = "5")
+            .data mustEqual Identifier(value = "5")
         (testSubject.mapToDomain("https://example.com/path/158/889") as Success)
-            .data mustEqual Identifier(id = "889")
+            .data mustEqual Identifier(value = "889")
         (testSubject.mapToDomain("https://example.com/path/158/abc/9999") as Success)
-            .data mustEqual Identifier(id = "9999")
+            .data mustEqual Identifier(value = "9999")
     }
 }

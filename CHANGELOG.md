@@ -24,6 +24,10 @@ See [changeset](https://github.com/wmontwe/mhp-mobile-challenge-android/compare/
 - RemoteDataSource
 - Dependency injection via custom injector
 
+### Changed
+
+- Identifier id to value to prevent id.id concatenation
+
 ## [0.0.1](https://github.com/wmontwe/mhp-mobile-challenge-android/releases/tag/v0.0.1)
 
 Initial project configuration
