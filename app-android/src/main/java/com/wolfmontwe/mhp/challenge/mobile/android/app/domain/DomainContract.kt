@@ -17,4 +17,12 @@ interface DomainContract {
             suspend fun getHouses(page: Int, pageSize: Int): Result<List<House>>
         }
     }
+
+    interface Service {
+        interface Pagination {
+            fun nextPage(): Int
+            fun pageSize(): Int
+            fun reset()
+        }
+    }
 }
