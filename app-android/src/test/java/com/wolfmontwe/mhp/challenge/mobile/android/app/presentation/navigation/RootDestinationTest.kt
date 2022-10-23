@@ -6,32 +6,23 @@ package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.navigation
 
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
+import com.wolfmontwe.mhp.challenge.mobile.android.app.test.assertSealedMemberSize
 import kotlin.test.Test
-import kotlin.test.assertEquals
 
 internal class RootDestinationTest {
 
     @Test
     fun `SHOULD implement contract`() {
-        validateSealedMemberSize()
+        assertSealedMemberSize(RootDestination::class, ROOT_DESTINATION_MEMBER_SIZE)
 
         RootDestination.House isOfType NavigationContract.Destination::class
     }
 
     @Test
     fun `SHOULD return correct route`() {
-        validateSealedMemberSize()
+        assertSealedMemberSize(RootDestination::class, ROOT_DESTINATION_MEMBER_SIZE)
 
         RootDestination.House.route mustEqual "house"
-    }
-
-    private fun validateSealedMemberSize() {
-        val subclasses = RootDestination::class.sealedSubclasses
-        assertEquals(
-            expected = ROOT_DESTINATION_MEMBER_SIZE,
-            actual = subclasses.size,
-            message = "Sealed member size changed and test needs to be adjusted accordingly"
-        )
     }
 
     companion object {
