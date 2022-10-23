@@ -34,7 +34,7 @@ internal class HttpsUrlConnectionFactoryTest {
         result.requestMethod mustEqual "GET"
         result.requestProperties.size mustEqual 1
         result.requestProperties mustContainKey "Accept"
-        result.requestProperties["Accept"]?.get(0) mustEqual "application/json"
+        result.requestProperties["Accept"]?.get(0) mustEqual "application/vnd.anapioficeandfire+json; version=1"
     }
 
     @Test

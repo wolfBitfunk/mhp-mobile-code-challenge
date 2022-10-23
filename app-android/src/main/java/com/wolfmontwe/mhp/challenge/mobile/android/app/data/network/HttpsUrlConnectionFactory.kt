@@ -21,6 +21,6 @@ class HttpsUrlConnectionFactory : Network.HttpsUrlConnectionFactory {
         const val REQUEST_METHOD_GET = "GET"
 
         const val REQUEST_PROPERTY_ACCEPT_KEY = "Accept"
-        const val REQUEST_PROPERTY_ACCEPT_VALUE = "application/json"
+        const val REQUEST_PROPERTY_ACCEPT_VALUE = "application/vnd.anapioficeandfire+json; version=1"
     }
 }
