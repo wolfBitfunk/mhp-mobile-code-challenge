@@ -21,6 +21,7 @@ See [changeset](https://github.com/wmontwe/mhp-mobile-challenge-android/compare/
 - Data layer contract
 - HttpClient using URLConnection
 - IceAndFireApi
+- RemoteDataSource
 
 ## [0.0.1](https://github.com/wmontwe/mhp-mobile-challenge-android/releases/tag/v0.0.1)
 
