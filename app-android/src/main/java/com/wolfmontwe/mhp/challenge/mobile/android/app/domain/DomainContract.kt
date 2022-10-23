@@ -4,7 +4,7 @@
 
 package com.wolfmontwe.mhp.challenge.mobile.android.app.domain
 
-import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.Repository.House
+import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
 
 interface DomainContract {
 
@@ -12,8 +12,14 @@ interface DomainContract {
         val id: String
     }
 
+    interface UseCase {
+        interface GetHousesPaginated {
+            suspend fun getHouses(): Result<List<House>>
+        }
+    }
+
     interface Repository {
-        interface House {
+        interface Houses {
             suspend fun getHouses(page: Int, pageSize: Int): Result<List<House>>
         }
     }
