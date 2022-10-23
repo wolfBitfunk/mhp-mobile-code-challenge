@@ -1,0 +1,52 @@
+name: CI - Publish Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  publish-release:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        api-level: [ 21, 29 ]
+      fail-fast: false
+
+    env:
+      GITHUB_PACKAGE_DOWNLOAD_USER: ${{ github.actor }}
+      GITHUB_PACKAGE_DOWNLOAD_KEY: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_PACKAGE_UPLOAD_USER: ${{ github.actor }}
+      GITHUB_PACKAGE_UPLOAD_KEY: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Setup Android SDK
+        uses: bitfunk/setup-android@v1.0.0
+
+      - name: Build project
+        run: ./gradlew --no-daemon --stacktrace build
+
+      - name: Run Android Device Tests
+        timeout-minutes: 30
+        uses: bitfunk/android-emulator-runner@v1.0.0
+        with:
+          api-level: ${{ matrix.api-level }}
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
+          script: ./gradlew --no-daemon --stacktrace connectedCheck
+
+      - name: Publish Release Version
+        run: echo "TODO"

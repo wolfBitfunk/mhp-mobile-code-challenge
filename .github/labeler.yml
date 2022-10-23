@@ -1,0 +1,23 @@
+ci:
+  - .github/**/*
+
+documentation:
+  - CHANGELOG.md
+  - LICENSE
+  - README.md
+
+# App Android
+app-android:
+  - app-android/**/*
+
+# Feature
+feature:
+  - feature/**/*
+
+# Common
+common:
+  - common/**/*
+
+# Library
+library:
+  - library/**/*
