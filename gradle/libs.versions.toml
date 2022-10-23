@@ -80,4 +80,6 @@ app-android-test = [
 app-android-androidTest = [
     "androidx-test-junit",
     "androidx-test-compose-junit",
+    "test-kotlin",
+    "test-kotlin-jUnit",
 ]
