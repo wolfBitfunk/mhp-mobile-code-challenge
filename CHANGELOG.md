@@ -19,6 +19,7 @@ See [changeset](https://github.com/wmontwe/mhp-mobile-challenge-android/compare/
 - Atomic Design base
 - House Domain contract and use case
 - Data layer contract
+- HttpClient using URLConnection
 
 ## [0.0.1](https://github.com/wmontwe/mhp-mobile-challenge-android/releases/tag/v0.0.1)
 

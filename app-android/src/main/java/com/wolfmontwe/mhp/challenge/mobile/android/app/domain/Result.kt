@@ -10,6 +10,11 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Success
 sealed interface Result<out R> {
     data class Success<out T>(val data: T) : Result<T>
     data class Failure(val exception: Exception) : Result<Nothing>
+
+    companion object {
+        fun <T> success(data: T) = Success(data)
+        fun failure(exception: Exception) = Failure(exception)
+    }
 }
 
 fun <T> Result<T>.isSuccess() = this is Success
