@@ -15,37 +15,56 @@ class JsonParserMock(
     var isResultSuccess: Boolean = true
 ) : Network.JsonParser {
 
+    var answerParseHouses: () -> List<HouseResponse> = {
+        throw IllegalArgumentException("answerParseHouses not defined")
+    }
+    var answerParseHouse: () -> HouseResponse = {
+        throw IllegalArgumentException("answerParseHouse not defined")
+    }
+    var answerParseCharacters: () -> List<CharacterResponse> = {
+        throw IllegalArgumentException("answerParseCharacters not defined")
+    }
+    var answerParseCharacter: () -> CharacterResponse = {
+        throw IllegalArgumentException("answerParseCharacter not defined")
+    }
+    var answerParseBooks: () -> List<BookResponse> = {
+        throw IllegalArgumentException("answerParseBooks not defined")
+    }
+    var answerParseBook: () -> BookResponse = {
+        throw IllegalArgumentException("answerParseBook not defined")
+    }
+
     var recordedJson: String? = null
         private set
 
     override fun parseHouses(json: String): Result<List<HouseResponse>> {
         recordedJson = json
-        return respond { TODO("Not yet implemented") }
+        return respond { answerParseHouses() }
     }
 
     override fun parseHouse(json: String): Result<HouseResponse> {
         recordedJson = json
-        return respond { TODO("Not yet implemented") }
+        return respond { answerParseHouse() }
     }
 
     override fun parseCharacters(json: String): Result<List<CharacterResponse>> {
         recordedJson = json
-        return respond { TODO("Not yet implemented") }
+        return respond { answerParseCharacters() }
     }
 
     override fun parseCharacter(json: String): Result<CharacterResponse> {
         recordedJson = json
-        return respond { TODO("Not yet implemented") }
+        return respond { answerParseCharacter() }
     }
 
     override fun parseBooks(json: String): Result<List<BookResponse>> {
         recordedJson = json
-        return respond { TODO("Not yet implemented") }
+        return respond { answerParseBooks() }
     }
 
     override fun parseBook(json: String): Result<BookResponse> {
         recordedJson = json
-        return respond { TODO("Not yet implemented") }
+        return respond { answerParseBook() }
     }
 
     private fun <T> respond(block: () -> T): Result<T> {

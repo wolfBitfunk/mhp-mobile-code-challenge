@@ -13,13 +13,17 @@ class HttpClientMock(
     var isResultSuccess: Boolean = true
 ) : Network.HttpClient {
 
+    var answerGet: () -> String = {
+        throw IllegalArgumentException("answerGet not defined")
+    }
+
     var recordedUrl: URL? = null
         private set
 
     override suspend fun get(url: URL): Result<String> {
         recordedUrl = url
         return if (isResultSuccess) {
-            Result.success("success")
+            Result.success(answerGet())
         } else {
             Result.failure(IOException("HttpClientMock error"))
         }
