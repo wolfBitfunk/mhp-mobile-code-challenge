@@ -4,36 +4,32 @@
 
 package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.atom
 
-import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun PrimaryTextButton(
-    text: String,
-    onClick: () -> Unit,
+fun AppSurface(
     modifier: Modifier = Modifier,
-    testTagName: String = "PrimaryTextButton",
+    testTagName: String = "AppSurface",
+    content: @Composable () -> Unit,
 ) {
-    Button(
-        onClick = onClick,
+    Surface(
         modifier = Modifier
+            .fillMaxSize()
             .testTag(testTagName)
             .then(modifier),
-    ) {
-        Text(
-            text = text.uppercase(),
-            style = MaterialTheme.typography.labelLarge
-        )
-    }
+        color = MaterialTheme.colorScheme.background,
+        content = content
+    )
 }
 
 @Preview
 @Composable
-fun PrimaryTextButtonPreview() {
-    PrimaryTextButton("Press here", {})
+fun AppSurfacePreview() {
+    AppSurface { }
 }
