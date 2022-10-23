@@ -8,7 +8,7 @@ class PaginationService(
     private val pageSize: Int = DEFAULT_PAGE_SIZE
 ) : DomainContract.Service.Pagination {
 
-    private var page: Int = 0
+    private var page: Int = 1
 
     override fun nextPage(): Int {
         return page++
@@ -17,7 +17,7 @@ class PaginationService(
     override fun pageSize(): Int = pageSize
 
     override fun reset() {
-        page = 0
+        page = 1
     }
 
     companion object {
