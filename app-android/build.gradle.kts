@@ -32,6 +32,14 @@ android {
         }
     }
 
+    sourceSets {
+        getByName("main") {
+            res {
+                srcDir("src/main/res_feature/house")
+            }
+        }
+    }
+
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
 
