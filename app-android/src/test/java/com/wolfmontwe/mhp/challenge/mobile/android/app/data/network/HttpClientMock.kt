@@ -6,10 +6,22 @@ package com.wolfmontwe.mhp.challenge.mobile.android.app.data.network
 
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.DataContract.Network
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result
+import java.io.IOException
 import java.net.URL
 
-class HttpClientMock : Network.HttpClient {
+class HttpClientMock(
+    var isResultSuccess: Boolean = true
+) : Network.HttpClient {
+
+    var recordedUrl: URL? = null
+        private set
+
     override suspend fun get(url: URL): Result<String> {
-        TODO("Not yet implemented")
+        recordedUrl = url
+        return if (isResultSuccess) {
+            Result.success("success")
+        } else {
+            Result.failure(IOException("HttpClientMock error"))
+        }
     }
 }
