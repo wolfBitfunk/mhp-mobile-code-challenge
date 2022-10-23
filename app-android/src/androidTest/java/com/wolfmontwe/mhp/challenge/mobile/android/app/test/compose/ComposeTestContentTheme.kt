@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.unit.dp
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainColors
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainThemeColor
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTheme
 
 fun ComposeUiTest.setThemedContent(
@@ -34,7 +34,7 @@ fun ComposeUiTest.setThemedScreenshotContent(
     setContent {
         MainTheme {
             Surface(
-                color = MainColors.debug
+                color = MainThemeColor.debug
             ) {
                 Box(
                     modifier = Modifier
