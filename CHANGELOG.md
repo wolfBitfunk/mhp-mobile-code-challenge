@@ -16,6 +16,7 @@ See [changeset](https://github.com/wmontwe/mhp-mobile-challenge-android/compare/
 
 - App navigation using Compose Navigation
 - Compose test setup
+- Atomic Design base
 
 ## [0.0.1](https://github.com/wmontwe/mhp-mobile-challenge-android/releases/tag/v0.0.1)
 
