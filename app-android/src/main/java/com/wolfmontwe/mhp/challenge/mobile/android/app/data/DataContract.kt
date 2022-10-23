@@ -4,6 +4,8 @@
 
 package com.wolfmontwe.mhp.challenge.mobile.android.app.data
 
+import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.BookResponse
+import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.CharacterResponse
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.HouseResponse
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
@@ -27,6 +29,17 @@ interface DataContract {
 	}
 
     interface Network {
+
+        interface IceAndFireApi {
+            suspend fun loadHouses(): List<HouseResponse>
+            suspend fun loadHouse(id: Int): HouseResponse
+
+            suspend fun loadCharacters(): List<CharacterResponse>
+            suspend fun loadCharacter(id: Int): CharacterResponse
+
+            suspend fun loadBooks(): List<BookResponse>
+            suspend fun loadBook(id: Int): BookResponse
+        }
 
         interface HttpClient {
             suspend fun get(url: URL): Result<String>
