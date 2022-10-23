@@ -13,7 +13,7 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result
 class IceAndFireApiMock : Network.IceAndFireApi {
 
     var answerLoadHouses: () -> Result<List<HouseResponse>> = {
-        throw IllegalArgumentException("answerParseHouses not defined")
+        throw IllegalArgumentException("answerLoadHouses not defined")
     }
 
     var recordedHousesPage: Int = -1

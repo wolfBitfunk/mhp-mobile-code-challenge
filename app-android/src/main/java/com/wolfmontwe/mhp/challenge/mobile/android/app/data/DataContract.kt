@@ -17,14 +17,15 @@ interface DataContract {
     interface DataSource {
         interface Houses {
             interface Remote {
-                suspend fun getHouses(page: Int, pageSize: Int): Result<List<HouseResponse>>
+                suspend fun getHouses(page: Int, pageSize: Int): Result<List<House>>
             }
         }
     }
 
     interface Mapper {
         interface Houses {
-            fun mapTo(from: HouseResponse): House
+            fun mapToDomain(from: HouseResponse): Result<House>
+            fun mapToDomain(from: List<HouseResponse>): Result<List<House>>
         }
     }
 

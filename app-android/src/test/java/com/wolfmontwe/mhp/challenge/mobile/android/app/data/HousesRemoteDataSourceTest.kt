@@ -5,12 +5,15 @@
 package com.wolfmontwe.mhp.challenge.mobile.android.app.data
 
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.DataContract.DataSource
+import com.wolfmontwe.mhp.challenge.mobile.android.app.data.mapper.HousesMapperMock
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.IceAndFireApiMock
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.HouseResponse
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.HouseResponseTestFixture
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Failure
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Success
+import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
+import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.HouseTestFixture
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -23,8 +26,9 @@ import kotlin.test.Test
 class HousesRemoteDataSourceTest {
 
     private val apiMock = IceAndFireApiMock()
+    private val mapperMock = HousesMapperMock()
 
-    private val testSubject = HousesRemoteDataSource(apiMock)
+    private val testSubject = HousesRemoteDataSource(apiMock, mapperMock)
 
     @Test
     fun `SHOULD implement contract`() {
@@ -36,8 +40,10 @@ class HousesRemoteDataSourceTest {
         // GIVEN
         val page = 2
         val pageSize = 8
-        val answer: Result<List<HouseResponse>> = Result.success(emptyList())
-        apiMock.answerLoadHouses = { answer }
+        val apiAnswer: Result<List<HouseResponse>> = Result.success(emptyList())
+        val mapperAnswer: Result<List<House>> = Result.success(emptyList())
+        apiMock.answerLoadHouses = { apiAnswer }
+        mapperMock.answerMapToDomainList = { mapperAnswer }
 
         // WHEN
         val result = testSubject.getHouses(page = page, pageSize = pageSize)
@@ -66,12 +72,15 @@ class HousesRemoteDataSourceTest {
     }
 
     @Test
-    fun `SHOULD return success WHEN api success`() = runTest {
+    fun `SHOULD use mapper and provide response data`() = runTest {
         // GIVEN
-        val page = 3
-        val pageSize = 7
-        val answer: Result<List<HouseResponse>> = Result.success(listOf(HouseResponseTestFixture.EXAMPLE))
-        apiMock.answerLoadHouses = { answer }
+        val page = 2
+        val pageSize = 8
+        val apiResponse = listOf(HouseResponseTestFixture.EXAMPLE)
+        val apiAnswer: Result<List<HouseResponse>> = Result.success(apiResponse)
+        val mapperAnswer: Result<List<House>> = Result.success(emptyList())
+        apiMock.answerLoadHouses = { apiAnswer }
+        mapperMock.answerMapToDomainList = { mapperAnswer }
 
         // WHEN
         val result = testSubject.getHouses(page = page, pageSize = pageSize)
@@ -79,6 +88,45 @@ class HousesRemoteDataSourceTest {
         // THEN
         result isOfType Success::class
         result as Success
-        result mustEqual answer
+        result mustEqual mapperAnswer
+        mapperMock.recordedHouseResponseList mustEqual apiResponse
+    }
+
+    @Test
+    fun `SHOULD return failure WHEN mapper fails`() = runTest {
+        // GIVEN
+        val page = 3
+        val pageSize = 7
+        val apiAnswer: Result<List<HouseResponse>> = Result.success(emptyList())
+        val mapperAnswer: Result<List<House>> = Result.failure(IOException("Mapper failed"))
+        apiMock.answerLoadHouses = { apiAnswer }
+        mapperMock.answerMapToDomainList = { mapperAnswer }
+
+        // WHEN
+        val result = testSubject.getHouses(page = page, pageSize = pageSize)
+
+        // THEN
+        result isOfType Failure::class
+        result as Failure
+        result mustEqual mapperAnswer
+    }
+
+    @Test
+    fun `SHOULD return success WHEN api success`() = runTest {
+        // GIVEN
+        val page = 3
+        val pageSize = 7
+        val apiAnswer: Result<List<HouseResponse>> = Result.success(listOf(HouseResponseTestFixture.EXAMPLE))
+        val mapperAnswer: Result<List<House>> = Result.success(listOf(HouseTestFixture.EXAMPLE))
+        apiMock.answerLoadHouses = { apiAnswer }
+        mapperMock.answerMapToDomainList = { mapperAnswer }
+
+        // WHEN
+        val result = testSubject.getHouses(page = page, pageSize = pageSize)
+
+        // THEN
+        result isOfType Success::class
+        result as Success
+        result mustEqual mapperAnswer
     }
 }
