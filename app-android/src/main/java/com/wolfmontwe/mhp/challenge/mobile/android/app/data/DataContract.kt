@@ -48,5 +48,14 @@ interface DataContract {
         interface HttpsUrlConnectionFactory {
             fun createGetRequest(url: URL): HttpsURLConnection
         }
+
+        interface JsonParser {
+            fun parseHouses(json: String): Result<List<HouseResponse>>
+            fun parseHouse(json: String): Result<HouseResponse>
+            fun parseCharacters(json: String): Result<List<CharacterResponse>>
+            fun parseCharacter(json: String): Result<CharacterResponse>
+            fun parseBooks(json: String): Result<List<BookResponse>>
+            fun parseBook(json: String): Result<BookResponse>
+        }
     }
 }
