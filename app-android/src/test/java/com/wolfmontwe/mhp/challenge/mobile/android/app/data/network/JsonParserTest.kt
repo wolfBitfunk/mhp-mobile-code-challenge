@@ -5,6 +5,7 @@
 package com.wolfmontwe.mhp.challenge.mobile.android.app.data.network
 
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.DataContract.Network
+import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.CharacterResponseTestFixture
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.HouseResponseTestFixture
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Failure
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Success
@@ -100,7 +101,7 @@ internal class JsonParserTest {
     @Test
     fun `SHOULD parse character json completely`() {
         // GIVEN
-        val json = JSON_CHARACTER
+        val json = CharacterResponseTestFixture.JSON_COMPLETE_TEST_EXAMPLE
 
         // WHEN
         val result = testSubject.parseCharacter(json)
@@ -108,28 +109,27 @@ internal class JsonParserTest {
         // THEN
         result isOfType Success::class
         result as Success
-        result.data.url mustEqual "testCharacterUrl"
-        result.data.name mustEqual "testCharacterName"
-        result.data.gender mustEqual "testCharacterGender"
-        result.data.culture mustEqual "testCharacterCulture"
-        result.data.born mustEqual "testCharacterBorn"
-        result.data.died mustEqual "testCharacterDied"
-        result.data.titles mustEqual listOf("testCharacterTitle1")
-        result.data.aliases mustEqual listOf("testCharacterAlias1", "testCharacterAlias2")
-        result.data.father mustEqual "testCharacterFather"
-        result.data.mother mustEqual "testCharacterMother"
-        result.data.spouse mustEqual "testCharacterSpouse"
-        result.data.allegiances mustEqual listOf("testCharacterAllegiance1")
-        result.data.books mustEqual listOf("testCharacterBook1")
-        result.data.povBooks mustEqual listOf("testCharacterPovBook1", "testCharacterPovBook2")
-        result.data.tvSeries mustEqual listOf("testCharacterTvSeries1", "testCharacterTvSeries2")
-        result.data.playedBy mustEqual listOf("testCharacterPlayedBy1")
+        result.data mustEqual CharacterResponseTestFixture.COMPLETE_TEST_EXAMPLE
+    }
+
+    @Test
+    fun `SHOULD parse character json`() {
+        // GIVEN
+        val json = CharacterResponseTestFixture.JSON_EXAMPLE
+
+        // WHEN
+        val result = testSubject.parseCharacter(json)
+
+        // THEN
+        result isOfType Success::class
+        result as Success
+        result.data mustEqual CharacterResponseTestFixture.EXAMPLE
     }
 
     @Test
     fun `SHOULD parse list of characters json completely`() {
         // GIVEN
-        val json = "[$JSON_CHARACTER,$JSON_CHARACTER]"
+        val json = CharacterResponseTestFixture.JSON_LIST_OF_COMPLETE_TEST_EXAMPLES
 
         // WHEN
         val result = testSubject.parseCharacters(json)
@@ -138,45 +138,5 @@ internal class JsonParserTest {
         result isOfType Success::class
         result as Success
         result.data.size mustEqual 2
-    }
-
-    companion object {
-        val JSON_CHARACTER = """
-            {
-            	"url": "testCharacterUrl",
-            	"name": "testCharacterName",
-            	"gender": "testCharacterGender",
-            	"culture": "testCharacterCulture",
-            	"born": "testCharacterBorn",
-            	"died": "testCharacterDied",
-            	"titles": [
-            		"testCharacterTitle1"
-            	],
-            	"aliases": [
-            		"testCharacterAlias1",
-            		"testCharacterAlias2"
-            	],
-            	"father": "testCharacterFather",
-            	"mother": "testCharacterMother",
-            	"spouse": "testCharacterSpouse",
-            	"allegiances": [
-            		"testCharacterAllegiance1"
-            	],
-            	"books": [
-            		"testCharacterBook1"
-            	],
-            	"povBooks": [
-            		"testCharacterPovBook1",
-            		"testCharacterPovBook2"
-            	],
-            	"tvSeries": [
-            		"testCharacterTvSeries1",
-            		"testCharacterTvSeries2"
-            	],
-            	"playedBy": [
-            		"testCharacterPlayedBy1"
-            	]
-            }
-        """.trimIndent()
     }
 }
