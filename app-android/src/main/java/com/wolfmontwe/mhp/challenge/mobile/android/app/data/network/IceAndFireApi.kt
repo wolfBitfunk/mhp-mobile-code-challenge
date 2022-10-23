@@ -20,48 +20,37 @@ class IceAndFireApi(
 
     override suspend fun loadHouses(): Result<List<HouseResponse>> {
         val url = URL(URL_API_HOUSES)
-        return when (val result = httpClient.get(url)) {
-            is Success -> jsonParser.parseHouses(result.data)
-            is Failure -> result
-        }
+        return load(url) { jsonParser.parseHouses(it) }
     }
 
     override suspend fun loadHouse(id: Int): Result<HouseResponse> {
         val url = URL("$URL_API_HOUSES/$id")
-        return when (val result = httpClient.get(url)) {
-            is Success -> jsonParser.parseHouse(result.data)
-            is Failure -> result
-        }
+        return load(url) { jsonParser.parseHouse(it) }
     }
 
     override suspend fun loadCharacters(): Result<List<CharacterResponse>> {
         val url = URL(URL_API_CHARACTERS)
-        return when (val result = httpClient.get(url)) {
-            is Success -> jsonParser.parseCharacters(result.data)
-            is Failure -> result
-        }
+        return load(url) { jsonParser.parseCharacters(it) }
     }
 
     override suspend fun loadCharacter(id: Int): Result<CharacterResponse> {
         val url = URL("$URL_API_CHARACTERS/$id")
-        return when (val result = httpClient.get(url)) {
-            is Success -> jsonParser.parseCharacter(result.data)
-            is Failure -> result
-        }
+        return load(url) { jsonParser.parseCharacter(it) }
     }
 
     override suspend fun loadBooks(): Result<List<BookResponse>> {
         val url = URL(URL_API_BOOKS)
-        return when (val result = httpClient.get(url)) {
-            is Success -> jsonParser.parseBooks(result.data)
-            is Failure -> result
-        }
+        return load(url) { jsonParser.parseBooks(it) }
     }
 
     override suspend fun loadBook(id: Int): Result<BookResponse> {
         val url = URL("$URL_API_BOOKS/$id")
+        return load(url) { jsonParser.parseBook(it) }
+    }
+
+    private suspend fun <T> load(url: URL, parse: (String) -> Result<T>): Result<T> {
         return when (val result = httpClient.get(url)) {
-            is Success -> jsonParser.parseBook(result.data)
+            is Success -> parse(result.data)
             is Failure -> result
         }
     }

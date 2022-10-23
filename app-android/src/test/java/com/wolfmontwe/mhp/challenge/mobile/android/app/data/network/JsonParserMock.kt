@@ -20,53 +20,37 @@ class JsonParserMock(
 
     override fun parseHouses(json: String): Result<List<HouseResponse>> {
         recordedJson = json
-        return if (isResultSuccess) {
-            TODO("Not yet implemented")
-        } else {
-            Result.failure(IOException("HttpClientMock error"))
-        }
+        return respond { TODO("Not yet implemented") }
     }
 
     override fun parseHouse(json: String): Result<HouseResponse> {
         recordedJson = json
-        return if (isResultSuccess) {
-            TODO("Not yet implemented")
-        } else {
-            Result.failure(IOException("HttpClientMock error"))
-        }
+        return respond { TODO("Not yet implemented") }
     }
 
     override fun parseCharacters(json: String): Result<List<CharacterResponse>> {
         recordedJson = json
-        return if (isResultSuccess) {
-            TODO("Not yet implemented")
-        } else {
-            Result.failure(IOException("HttpClientMock error"))
-        }
+        return respond { TODO("Not yet implemented") }
     }
 
     override fun parseCharacter(json: String): Result<CharacterResponse> {
         recordedJson = json
-        return if (isResultSuccess) {
-            TODO("Not yet implemented")
-        } else {
-            Result.failure(IOException("HttpClientMock error"))
-        }
+        return respond { TODO("Not yet implemented") }
     }
 
     override fun parseBooks(json: String): Result<List<BookResponse>> {
         recordedJson = json
-        return if (isResultSuccess) {
-            TODO("Not yet implemented")
-        } else {
-            Result.failure(IOException("HttpClientMock error"))
-        }
+        return respond { TODO("Not yet implemented") }
     }
 
     override fun parseBook(json: String): Result<BookResponse> {
         recordedJson = json
+        return respond { TODO("Not yet implemented") }
+    }
+
+    private fun <T> respond(block: () -> T): Result<T> {
         return if (isResultSuccess) {
-            TODO("Not yet implemented")
+            Result.success(block())
         } else {
             Result.failure(IOException("HttpClientMock error"))
         }
