@@ -14,7 +14,7 @@ class IdentifierMapper : Mapper.Id {
         return try {
             val url = URL(from)
             val id = url.path.substringAfterLast("/")
-            Result.success(Identifier(id = id))
+            Result.success(Identifier(value = id))
         } catch (exception: Exception) {
             Result.failure(exception)
         }
