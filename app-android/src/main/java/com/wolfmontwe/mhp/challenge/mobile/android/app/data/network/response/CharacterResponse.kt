@@ -18,7 +18,7 @@ data class CharacterResponse(
     val spouse: String,
     val allegiances: List<String>,
     val books: List<String>,
+    val povBooks: List<String>,
     val tvSeries: List<String>,
     val playedBy: List<String>,
-    val povBooks: List<String>,
 )
