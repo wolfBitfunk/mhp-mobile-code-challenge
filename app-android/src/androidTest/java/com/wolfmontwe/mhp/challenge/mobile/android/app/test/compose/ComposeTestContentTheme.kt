@@ -2,6 +2,8 @@
  * Copyright (c) 2022. Wolf-Martell Montwé
  */
 
+@file:OptIn(ExperimentalTestApi::class)
+
 package com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose
 
 import androidx.compose.foundation.layout.Box
@@ -10,12 +12,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.test.junit4.ComposeContentTestRule
+import androidx.compose.ui.test.ComposeUiTest
+import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.wolfmontwe.mhp.challenge.mobile.android.app.ui.theme.MainColors
-import com.wolfmontwe.mhp.challenge.mobile.android.app.ui.theme.MainTheme
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainThemeColor
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTheme
 
-fun ComposeContentTestRule.setThemedContent(
+fun ComposeUiTest.setThemedContent(
     content: @Composable () -> Unit
 ) {
     setContent {
@@ -25,13 +29,38 @@ fun ComposeContentTestRule.setThemedContent(
     }
 }
 
-fun ComposeContentTestRule.setThemedScreenshotContent(
+fun ComposeUiTest.setThemedSizedContent(
+    height: Dp,
+    width: Dp,
     content: @Composable () -> Unit
 ) {
     setContent {
         MainTheme {
             Surface(
-                color = MainColors.debug
+                color = MainThemeColor.debug
+            ) {
+                Box(
+                    modifier = Modifier
+                        .height(height)
+                        .width(width)
+                ) {
+                    content()
+                }
+            }
+        }
+    }
+}
+
+fun ComposeUiTest.setThemedScreenshotContent(
+    content: @Composable () -> Unit
+) {
+    setContent {
+        MainTheme(
+            darkTheme = false,
+            dynamicColor = false,
+        ) {
+            Surface(
+                color = MainThemeColor.debug
             ) {
                 Box(
                     modifier = Modifier

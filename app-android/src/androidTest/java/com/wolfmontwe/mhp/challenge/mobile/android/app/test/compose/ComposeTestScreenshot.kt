@@ -25,7 +25,7 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.test.util.saveBitmapInDow
 fun SemanticsNodeInteraction.assertScreenshotMatches(
     folderPath: String,
     fileName: String,
-    saveAsExpected: Boolean = true
+    saveAsExpected: Boolean = false
 ) {
     val actualBitmap = captureToImage().asAndroidBitmap()
     val screenShotName = "$fileName-${actualBitmap.width}x${actualBitmap.height}.png"
