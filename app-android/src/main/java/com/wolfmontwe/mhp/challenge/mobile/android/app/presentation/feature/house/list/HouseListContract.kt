@@ -16,10 +16,10 @@ interface HouseListContract {
 
     interface ViewModelFactory : ViewModelProvider.Factory
 
-    data class ViewState(
-        val items: List<House> = emptyList(),
-        val isLoading: Boolean = false,
-        val error: String? = null,
-        val isPagingEnd: Boolean = false,
-    )
+    interface ViewState {
+        val items: List<House>
+        val isLoading: Boolean
+        val error: String?
+        val isPagingEnd: Boolean
+    }
 }
