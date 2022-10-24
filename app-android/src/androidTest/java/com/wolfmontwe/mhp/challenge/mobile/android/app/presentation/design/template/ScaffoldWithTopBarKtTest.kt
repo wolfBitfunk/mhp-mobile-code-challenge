@@ -11,7 +11,6 @@ import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.onChild
 import androidx.compose.ui.test.onChildAt
 import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.printToLog
 import androidx.compose.ui.test.runComposeUiTest
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.assertScreenshotMatches
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.setThemedContent
