@@ -34,8 +34,6 @@ class ScaffoldWithTopBarKtTest {
         // WHEN
         val view = onNodeWithTag(testTagName)
 
-        view.printToLog("TEST")
-
         // THEN
         view.assertIsDisplayed()
         view.onChildAt(0).assertTextEquals("Content")

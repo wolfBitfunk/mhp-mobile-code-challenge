@@ -52,7 +52,7 @@ class AppSurfaceKtTest {
             .assertScreenshotMatches("atom", testTagName)
     }
 
-    companion object {
+    private companion object {
         const val testTagName = "AppSurface"
     }
 }

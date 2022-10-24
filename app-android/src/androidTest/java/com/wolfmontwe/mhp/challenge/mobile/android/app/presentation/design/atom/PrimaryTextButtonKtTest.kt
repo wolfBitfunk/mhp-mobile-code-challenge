@@ -86,7 +86,7 @@ class PrimaryTextButtonKtTest {
             .assertScreenshotMatches("atom", testTagName)
     }
 
-    companion object {
+    private companion object {
         const val testTagName = "PrimaryTextButton"
     }
 }

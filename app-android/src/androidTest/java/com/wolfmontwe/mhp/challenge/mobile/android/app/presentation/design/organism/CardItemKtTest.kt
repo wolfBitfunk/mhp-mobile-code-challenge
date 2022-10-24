@@ -82,7 +82,7 @@ class CardItemKtTest {
             .assertScreenshotMatches("organism", testTagName)
     }
 
-    companion object {
+    private companion object {
         const val testTagName = "CardItem"
     }
 }
