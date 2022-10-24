@@ -86,7 +86,7 @@ class ErrorItemKtTest {
 
         // THEN
         view.assertIsDisplayed()
-            .assertScreenshotMatches("organism", testTagName, true)
+            .assertScreenshotMatches("organism", testTagName)
     }
 
     private companion object {

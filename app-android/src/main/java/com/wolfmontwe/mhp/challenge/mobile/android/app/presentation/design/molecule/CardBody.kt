@@ -5,12 +5,10 @@
 package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.molecule
 
 import android.content.res.Configuration
-import androidx.compose.foundation.magnifier
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.atom.BodyMedium
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.atom.BodyLarge
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTheme
 
 @Composable
@@ -19,7 +17,7 @@ fun CardBody(
     modifier: Modifier = Modifier,
     testTagName: String = "CardBody",
 ) {
-    BodyMedium(
+    BodyLarge(
         text = text,
         modifier = Modifier
             .then(modifier),
