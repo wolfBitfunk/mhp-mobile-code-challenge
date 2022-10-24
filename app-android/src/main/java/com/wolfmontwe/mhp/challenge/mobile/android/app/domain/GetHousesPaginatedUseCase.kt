@@ -24,4 +24,8 @@ class GetHousesPaginatedUseCase(
         }
         return result
     }
+
+    override suspend fun reset() {
+        pagination.reset()
+    }
 }

@@ -4,11 +4,9 @@
 
 package com.wolfmontwe.mhp.challenge.mobile.android.app.domain
 
-import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.Repository
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.UseCase
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Failure
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Success
-import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -61,6 +59,17 @@ class GetHousesPaginatedUseCaseTest {
         // THEN
         result isOfType Failure::class
 
+        paginationServiceMock.recordedReset mustEqual true
+    }
+
+    @Test
+    fun `SHOULD reset pagination`() = runTest {
+        // GIVEN
+
+        // WHEN
+        testSubject.reset()
+
+        // THEN
         paginationServiceMock.recordedReset mustEqual true
     }
 }

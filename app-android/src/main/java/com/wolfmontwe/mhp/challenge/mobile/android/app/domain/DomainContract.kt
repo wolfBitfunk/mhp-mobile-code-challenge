@@ -16,6 +16,7 @@ interface DomainContract {
     interface UseCase {
         interface GetHousesPaginated {
             suspend fun getHouses(): Result<List<House>>
+            suspend fun reset()
         }
     }
 
