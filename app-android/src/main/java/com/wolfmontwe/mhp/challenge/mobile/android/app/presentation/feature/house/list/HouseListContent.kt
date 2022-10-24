@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
@@ -31,7 +32,8 @@ fun HouseListContent(
 ) {
     LazyColumn(
         contentPadding = innerPadding,
-        verticalArrangement = Arrangement.spacedBy(MainThemeDimension.spacingHalf)
+        verticalArrangement = Arrangement.spacedBy(MainThemeDimension.spacingHalf),
+        modifier = Modifier.testTag("HouseListContent")
     ) {
         items(items.size) { index ->
             val item = items[index]

@@ -28,7 +28,7 @@ fun HouseListScreen(
     val state by viewModel.state.collectAsState()
 
     ScaffoldWithTopBar(
-        title = stringResource(id = string.house_list_screen_title)
+        title = stringResource(id = string.house_list_screen_title),
     ) { innerPadding ->
         val error = state.error
         if (error == null) {

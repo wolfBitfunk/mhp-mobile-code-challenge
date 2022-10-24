@@ -54,7 +54,7 @@ class ScaffoldWithTopBarKtTest {
             .assertScreenshotMatches("template", testTagName)
     }
 
-    companion object {
+    private companion object {
         const val testTagName = "ScaffoldWithTopBar"
     }
 }
