@@ -4,6 +4,7 @@
 
 package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.list
 
+import androidx.lifecycle.ViewModelProvider
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
 
 interface HouseListContract {
@@ -12,6 +13,8 @@ interface HouseListContract {
         fun loadMoreItems()
         fun retry()
     }
+
+    interface ViewModelFactory : ViewModelProvider.Factory
 
     data class ViewState(
         val items: List<House> = emptyList(),
