@@ -5,21 +5,22 @@
 package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.molecule
 
 import android.content.res.Configuration
+import androidx.compose.foundation.magnifier
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.atom.TitleMedium
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.atom.BodyMedium
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTheme
 
 @Composable
-fun CardHeader(
-    title: String,
+fun CardBody(
+    text: String,
     modifier: Modifier = Modifier,
-    testTagName: String = "CardHeader",
+    testTagName: String = "CardBody",
 ) {
-    TitleMedium(
-        text = title,
+    BodyMedium(
+        text = text,
         modifier = Modifier
             .then(modifier),
         testTagName = testTagName,
@@ -36,8 +37,8 @@ fun CardHeader(
     uiMode = Configuration.UI_MODE_NIGHT_YES,
 )
 @Composable
-fun CardHeaderPreview() {
+fun CardBodyPreview() {
     MainTheme {
-        CardHeader("CardHeader")
+        CardBody("CardBody")
     }
 }

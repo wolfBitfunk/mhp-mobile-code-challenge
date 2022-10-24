@@ -34,10 +34,10 @@ class PrimaryTextButtonKtTest {
         }
 
         // When
-        val button = onNodeWithTag(testTagName)
+        val view = onNodeWithTag(testTagName)
 
         // Then
-        button.assertIsDisplayed()
+        view.assertIsDisplayed()
             .assertHasClickAction()
             .assertTextEquals("TEXT")
     }
@@ -56,11 +56,11 @@ class PrimaryTextButtonKtTest {
         }
 
         // When
-        val button = onNodeWithTag(testTagName)
+        val view = onNodeWithTag(testTagName)
             .performClick()
 
         // Then
-        button.assertIsDisplayed()
+        view.assertIsDisplayed()
             .assertHasClickAction()
 
         clickExecuted mustEqual true
@@ -79,10 +79,10 @@ class PrimaryTextButtonKtTest {
         }
 
         // When
-        val button = onNodeWithTag(testTagName)
+        val view = onNodeWithTag(testTagName)
 
         // Then
-        button.assertIsDisplayed()
+        view.assertIsDisplayed()
             .assertScreenshotMatches("atom", testTagName)
     }
 

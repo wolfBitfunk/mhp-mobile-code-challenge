@@ -25,8 +25,8 @@ fun PrimaryTextButton(
     Button(
         onClick = onClick,
         modifier = Modifier
-            .testTag(testTagName)
-            .then(modifier),
+            .then(modifier)
+            .testTag(testTagName),
         colors = colors,
     ) {
         Text(

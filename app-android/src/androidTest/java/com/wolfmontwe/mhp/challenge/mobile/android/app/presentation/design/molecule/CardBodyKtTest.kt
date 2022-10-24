@@ -13,20 +13,20 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.setThemedScr
 import org.junit.Test
 
 @OptIn(ExperimentalTestApi::class)
-class CardHeaderKtTest {
+class CardBodyKtTest {
 
     @Test
     fun should_match_design_specification() = runComposeUiTest {
         // GIVEN
         setThemedScreenshotContent {
-            CardHeader(title = "CardHeader")
+            CardBody(text = "CardBody")
         }
 
         // WHEN
-        val view = onNodeWithTag("CardHeader")
+        val view = onNodeWithTag("CardBody")
 
         // THEN
         view.assertIsDisplayed()
-            .assertScreenshotMatches("molecule", "CardHeader")
+            .assertScreenshotMatches("molecule", "CardBody")
     }
 }

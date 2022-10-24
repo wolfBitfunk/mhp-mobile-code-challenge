@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MHP - Game of Thrones</string>
+    <string name="error_item_title">There is only one thing we say to death: Not today.</string>
+    <string name="error_item_button_label">Retry</string>
 </resources>
