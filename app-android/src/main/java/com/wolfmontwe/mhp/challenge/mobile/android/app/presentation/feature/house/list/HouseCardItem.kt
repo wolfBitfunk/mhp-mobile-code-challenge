@@ -26,7 +26,7 @@ fun HouseCardItem(
     house: House,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    testTagName: String = "CardHouseItem",
+    testTagName: String = "HouseCardItem",
 ) {
     Card(
         modifier = Modifier
@@ -34,8 +34,8 @@ fun HouseCardItem(
                 horizontal = MainThemeDimension.spacingDouble,
                 vertical = MainThemeDimension.spacingSingle
             )
-            .testTag(testTagName)
-            .then(modifier),
+            .then(modifier)
+            .testTag(testTagName),
         onClick = onClick
     ) {
         Column(
