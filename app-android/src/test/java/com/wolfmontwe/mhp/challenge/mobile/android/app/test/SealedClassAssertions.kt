@@ -4,8 +4,8 @@
 
 package com.wolfmontwe.mhp.challenge.mobile.android.app.test
 
-import kotlin.test.assertEquals
 import kotlin.reflect.KClass
+import kotlin.test.assertEquals
 
 fun assertSealedMemberSize(type: KClass<*>, expectedSize: Int) {
     val subclasses = type.sealedSubclasses

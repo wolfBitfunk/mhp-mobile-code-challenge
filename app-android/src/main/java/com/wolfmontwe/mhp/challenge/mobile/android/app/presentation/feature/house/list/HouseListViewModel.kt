@@ -10,4 +10,9 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.Use
 class HouseListViewModel(
     private val useCaseGetHousesPaginated: UseCase.GetHousesPaginated
 ) : HouseListContract.ViewModel, ViewModel() {
+    override fun loadMoreItems() {
+    }
+
+    override fun retry() {
+    }
 }
