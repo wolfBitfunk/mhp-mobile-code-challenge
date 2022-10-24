@@ -4,6 +4,8 @@
 
 package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.atom
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertHeightIsEqualTo
 import androidx.compose.ui.test.assertIsDisplayed
@@ -25,7 +27,10 @@ class AppSurfaceKtTest {
         val height = 480.dp
         val width = 300.dp
         setThemedSizedContent(height, width) {
-            AppSurface {}
+            AppSurface(
+                modifier = Modifier.fillMaxSize(),
+                content = {},
+            )
         }
 
         // WHEN
@@ -41,7 +46,10 @@ class AppSurfaceKtTest {
     fun should_match_design_specification() = runComposeUiTest {
         // GIVEN
         setThemedScreenshotContent {
-            AppSurface {}
+            AppSurface(
+                modifier = Modifier.fillMaxSize(),
+                content = {},
+            )
         }
 
         // WHEN

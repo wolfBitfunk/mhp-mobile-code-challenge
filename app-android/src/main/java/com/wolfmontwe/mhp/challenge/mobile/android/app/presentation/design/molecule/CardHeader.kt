@@ -7,10 +7,9 @@ package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.mole
 import android.content.res.Configuration
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.atom.TitleMedium
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTheme
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainThemeWithSurface
 
 @Composable
 fun CardHeader(
@@ -37,7 +36,7 @@ fun CardHeader(
 )
 @Composable
 fun CardHeaderPreview() {
-    MainTheme {
+    MainThemeWithSurface {
         CardHeader("CardHeader")
     }
 }

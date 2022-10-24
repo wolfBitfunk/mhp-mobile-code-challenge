@@ -15,7 +15,6 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.assertScreen
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.setThemedContent
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.setThemedScreenshotContent
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
-import org.junit.Assert.*
 import org.junit.Test
 
 @OptIn(ExperimentalTestApi::class)

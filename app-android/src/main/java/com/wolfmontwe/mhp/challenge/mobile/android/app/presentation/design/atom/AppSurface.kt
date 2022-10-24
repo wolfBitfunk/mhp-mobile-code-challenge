@@ -6,8 +6,8 @@ package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.atom
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.Composable
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,7 +21,6 @@ fun AppSurface(
 ) {
     Surface(
         modifier = Modifier
-            .fillMaxSize()
             .testTag(testTagName)
             .then(modifier),
         content = content
@@ -40,6 +39,9 @@ fun AppSurface(
 @Composable
 fun AppSurfacePreview() {
     MainTheme {
-        AppSurface { }
+        AppSurface(
+            modifier = Modifier.fillMaxSize(),
+            content = { }
+        )
     }
 }

@@ -15,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.molecule.CardHeader
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTheme
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainThemeDimension
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainThemeWithSurface
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,7 +57,7 @@ fun CardItem(
 )
 @Composable
 fun CardItemPreview() {
-    MainTheme {
+    MainThemeWithSurface {
         CardItem("Title", {})
     }
 }

@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTheme
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainThemeWithSurface
 
 @Composable
 fun HeadlineLarge(
@@ -39,7 +39,7 @@ fun HeadlineLarge(
 )
 @Composable
 fun HeadlineLargePreview() {
-    MainTheme {
+    MainThemeWithSurface {
         HeadlineLarge("HeadlineLarge")
     }
 }
@@ -70,7 +70,7 @@ fun HeadlineMedium(
 )
 @Composable
 fun HeadlineMediumPreview() {
-    MainTheme {
+    MainThemeWithSurface {
         HeadlineMedium("HeadlineMedium")
     }
 }
@@ -101,7 +101,7 @@ fun HeadlineSmall(
 )
 @Composable
 fun HeadlineSmallPreview() {
-    MainTheme {
+    MainThemeWithSurface {
         HeadlineSmall("HeadlineSmall")
     }
 }

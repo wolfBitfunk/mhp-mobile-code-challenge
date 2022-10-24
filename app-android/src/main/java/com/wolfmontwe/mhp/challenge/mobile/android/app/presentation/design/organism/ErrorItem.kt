@@ -22,8 +22,8 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.R
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.atom.PrimaryTextButton
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.molecule.CardBody
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.molecule.CardHeader
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTheme
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainThemeDimension
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainThemeWithSurface
 
 @Composable
 fun ErrorItem(
@@ -85,7 +85,7 @@ fun ErrorItem(
 )
 @Composable
 fun ErrorItemPreview() {
-    MainTheme {
+    MainThemeWithSurface {
         ErrorItem("Title", "Description", {})
     }
 }

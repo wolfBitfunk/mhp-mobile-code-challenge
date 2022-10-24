@@ -17,7 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTheme
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainThemeWithSurface
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -58,7 +58,7 @@ fun ScaffoldWithTopBar(
 )
 @Composable
 fun DefaultPreview() {
-    MainTheme {
+    MainThemeWithSurface {
         ScaffoldWithTopBar(title = "Title") {
             Text(text = "Content")
         }

@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainThemeWithSurface
 
 @Composable
 fun PrimaryTextButton(
@@ -39,5 +40,7 @@ fun PrimaryTextButton(
 @Preview
 @Composable
 fun PrimaryTextButtonPreview() {
-    PrimaryTextButton("Press here", {})
+    MainThemeWithSurface {
+        PrimaryTextButton("Press here", {})
+    }
 }
