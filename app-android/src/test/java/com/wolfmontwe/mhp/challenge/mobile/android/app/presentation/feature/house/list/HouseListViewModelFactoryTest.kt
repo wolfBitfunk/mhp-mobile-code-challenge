@@ -5,7 +5,7 @@
 package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.list
 
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.UseCase
-import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.GetHousesPaginatedMock
+import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.GetHousesPaginatedUseCaseMock
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.MainDispatcherRule
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -19,7 +19,7 @@ class HouseListViewModelFactoryTest {
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
-    private val getHousesPaginated: UseCase.GetHousesPaginated = GetHousesPaginatedMock()
+    private val getHousesPaginated: UseCase.GetHousesPaginated = GetHousesPaginatedUseCaseMock()
 
     private val testSubject = HouseListViewModelFactory(
         useCaseGetHousesPaginated = getHousesPaginated

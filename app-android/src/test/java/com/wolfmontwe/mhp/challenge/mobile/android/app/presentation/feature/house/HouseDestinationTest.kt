@@ -7,8 +7,8 @@ package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.hou
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.navigation.NavigationContract
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.navigation.RootDestination
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.navigation.RootDestinationTest
-import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.assertSealedMemberSize
+import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
 import kotlin.test.Test
 

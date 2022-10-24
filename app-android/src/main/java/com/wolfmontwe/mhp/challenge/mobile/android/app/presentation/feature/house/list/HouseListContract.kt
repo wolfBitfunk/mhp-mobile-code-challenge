@@ -6,12 +6,15 @@ package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.hou
 
 import androidx.lifecycle.ViewModelProvider
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
+import kotlinx.coroutines.flow.StateFlow
 
 interface HouseListContract {
 
     interface ViewModel {
+        val state: StateFlow<HouseListViewState>
+
         fun loadMoreItems()
-        fun retry()
+        fun reset()
     }
 
     interface ViewModelFactory : ViewModelProvider.Factory

@@ -4,9 +4,9 @@
 
 package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.navigation
 
+import com.wolfmontwe.mhp.challenge.mobile.android.app.test.assertSealedMemberSize
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
-import com.wolfmontwe.mhp.challenge.mobile.android.app.test.assertSealedMemberSize
 import kotlin.test.Test
 
 internal class RootDestinationTest {

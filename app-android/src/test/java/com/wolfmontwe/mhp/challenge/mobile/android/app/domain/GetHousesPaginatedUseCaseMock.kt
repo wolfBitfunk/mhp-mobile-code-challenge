@@ -7,10 +7,10 @@ package com.wolfmontwe.mhp.challenge.mobile.android.app.domain
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.UseCase
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
 
-class GetHousesPaginatedMock : UseCase.GetHousesPaginated {
+class GetHousesPaginatedUseCaseMock : UseCase.GetHousesPaginated {
 
     var answerGetHouses: () -> Result<List<House>> = {
-        throw IllegalArgumentException("answerGetHouse not defined")
+        throw IllegalArgumentException("answerGetHouses not defined")
     }
 
     var recordedGetHouses: Boolean = false
