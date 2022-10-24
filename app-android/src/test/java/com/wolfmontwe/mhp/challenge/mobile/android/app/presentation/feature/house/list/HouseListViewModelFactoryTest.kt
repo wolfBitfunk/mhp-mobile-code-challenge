@@ -6,16 +6,18 @@ package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.hou
 
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.UseCase
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.GetHousesPaginatedMock
+import com.wolfmontwe.mhp.challenge.mobile.android.app.test.MainDispatcherRule
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
+import org.junit.Rule
 import kotlin.test.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class HouseListViewModelFactoryTest {
+
+    @get:Rule
+    val mainDispatcherRule = MainDispatcherRule()
 
     private val getHousesPaginated: UseCase.GetHousesPaginated = GetHousesPaginatedMock()
 
@@ -31,7 +33,6 @@ class HouseListViewModelFactoryTest {
     @Test
     fun `SHOULD create viewModel`() = runTest {
         // GIVEN
-        Dispatchers.setMain(StandardTestDispatcher())
 
         // WHEN
         val result = testSubject.create(HouseListViewModel::class.java)
