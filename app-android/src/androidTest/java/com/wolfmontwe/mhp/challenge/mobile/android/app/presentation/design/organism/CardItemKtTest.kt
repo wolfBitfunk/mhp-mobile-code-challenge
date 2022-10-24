@@ -33,10 +33,10 @@ class CardItemKtTest {
         }
 
         // When
-        val button = onNodeWithTag(testTagName)
+        val view = onNodeWithTag(testTagName)
 
         // Then
-        button.assertIsDisplayed()
+        view.assertIsDisplayed()
             .assertHasClickAction()
             .assertTextEquals(text)
     }
@@ -54,11 +54,11 @@ class CardItemKtTest {
         }
 
         // When
-        val button = onNodeWithTag(testTagName)
+        val view = onNodeWithTag(testTagName)
             .performClick()
 
         // Then
-        button.assertIsDisplayed()
+        view.assertIsDisplayed()
             .assertHasClickAction()
 
         clickExecuted mustEqual true
@@ -75,14 +75,14 @@ class CardItemKtTest {
         }
 
         // When
-        val button = onNodeWithTag(testTagName)
+        val view = onNodeWithTag(testTagName)
 
         // Then
-        button.assertIsDisplayed()
+        view.assertIsDisplayed()
             .assertScreenshotMatches("organism", testTagName)
     }
 
-    companion object {
+    private companion object {
         const val testTagName = "CardItem"
     }
 }

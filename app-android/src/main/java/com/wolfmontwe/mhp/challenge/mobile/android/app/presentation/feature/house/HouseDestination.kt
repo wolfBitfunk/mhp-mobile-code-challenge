@@ -17,12 +17,12 @@ sealed class HouseDestination : NestedDestination {
         override fun targetRoute(): String = route
     }
 
-    object HouseDetail : HouseDestination(), NavigateWithArgument<Int> {
+    object HouseDetail : HouseDestination(), NavigateWithArgument<String> {
         const val ARGUMENT_KEY_HOUSE_ID = "houseId"
 
         override val route: String = "${rootDestination.route}/detail/{$ARGUMENT_KEY_HOUSE_ID}"
 
         override fun argumentKey(): String = ARGUMENT_KEY_HOUSE_ID
-        override fun targetRoute(argument: Int): String = "${rootDestination.route}/detail/$argument"
+        override fun targetRoute(argument: String): String = "${rootDestination.route}/detail/$argument"
     }
 }

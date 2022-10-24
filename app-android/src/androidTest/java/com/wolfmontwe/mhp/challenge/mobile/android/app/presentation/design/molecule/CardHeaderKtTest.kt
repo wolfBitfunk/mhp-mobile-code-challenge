@@ -14,6 +14,7 @@ import org.junit.Test
 
 @OptIn(ExperimentalTestApi::class)
 class CardHeaderKtTest {
+
     @Test
     fun should_match_design_specification() = runComposeUiTest {
         // GIVEN

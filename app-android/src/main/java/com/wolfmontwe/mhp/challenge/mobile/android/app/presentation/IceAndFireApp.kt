@@ -4,7 +4,9 @@
 
 package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.atom.AppSurface
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.navigation.Navigation
@@ -13,7 +15,9 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTh
 @Composable
 fun IceAndFireApp() {
     MainTheme {
-        AppSurface {
+        AppSurface(
+            modifier = Modifier.fillMaxSize()
+        ) {
             val controller = rememberNavController()
             Navigation(controller)
         }

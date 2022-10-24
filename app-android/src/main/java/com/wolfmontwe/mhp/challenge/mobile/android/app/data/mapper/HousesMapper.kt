@@ -6,10 +6,10 @@ package com.wolfmontwe.mhp.challenge.mobile.android.app.data.mapper
 
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.DataContract.Mapper
 import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.response.HouseResponse
-import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Failure
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Success
+import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.Identifier
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.map
 

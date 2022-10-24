@@ -23,6 +23,7 @@ See [changeset](https://github.com/wmontwe/mhp-mobile-challenge-android/compare/
 - IceAndFireApi
 - RemoteDataSource
 - Dependency injection via custom injector
+- House list view
 
 ### Changed
 

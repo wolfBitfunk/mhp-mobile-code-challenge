@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun HouseDetailView(
-    houseId: Int
+    houseId: String
 ) {
     Text(text = "HouseDetailView")
 }

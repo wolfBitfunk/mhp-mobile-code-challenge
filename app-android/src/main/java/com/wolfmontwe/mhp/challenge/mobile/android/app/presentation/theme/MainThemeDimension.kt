@@ -8,6 +8,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 object MainThemeDimension {
+    val spacingZero: Dp = 0.dp
     val spacingQuarter: Dp = 2.dp
     val spacingHalf: Dp = 4.dp
     val spacingSingle: Dp = 8.dp

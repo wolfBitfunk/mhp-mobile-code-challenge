@@ -9,12 +9,11 @@ import androidx.compose.ui.test.runComposeUiTest
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.HouseDestination
-import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.BaseComposeTest
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
 import org.junit.Test
 
 @OptIn(ExperimentalTestApi::class)
-class NavigationKtTest : BaseComposeTest() {
+class NavigationKtTest {
 
     @Test
     fun should_navigate_to_house_list_when_root_destination_house_is_default() = runComposeUiTest {
@@ -90,7 +89,7 @@ class NavigationKtTest : BaseComposeTest() {
     fun should_navigate_to_house_detail_and_use_argument() = runComposeUiTest {
         // GIVEN
         lateinit var navController: NavHostController
-        val targetArgument = 123
+        val targetArgument = "123"
         val targetRoute = HouseDestination.HouseDetail.targetRoute(targetArgument)
 
         // WHEN
@@ -105,7 +104,7 @@ class NavigationKtTest : BaseComposeTest() {
         val route = navController.currentBackStackEntry?.destination?.route
         route mustEqual HouseDestination.HouseDetail.route
         val argument = navController
-            .currentBackStackEntry?.arguments?.getInt(HouseDestination.HouseDetail.argumentKey())
+            .currentBackStackEntry?.arguments?.getString(HouseDestination.HouseDetail.argumentKey())
         argument mustEqual targetArgument
     }
 }

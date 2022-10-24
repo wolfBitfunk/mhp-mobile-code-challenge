@@ -11,7 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.detail.HouseDetailView
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.list.HouseListView
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.list.HouseListScreen
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.navigation.RootDestination
 
 fun NavGraphBuilder.addHouseNavigation(
@@ -22,16 +22,22 @@ fun NavGraphBuilder.addHouseNavigation(
         route = RootDestination.House.route
     ) {
         composable(route = HouseDestination.HouseList.route) {
-            HouseListView {
-                controller.navigate(HouseDestination.HouseDetail.targetRoute(it))
-            }
+            HouseListScreen(
+                openDetailView = {
+                    controller.navigate(HouseDestination.HouseDetail.targetRoute(it))
+                }
+            )
         }
         composable(
             route = HouseDestination.HouseDetail.route,
-            arguments = listOf(navArgument(HouseDestination.HouseDetail.ARGUMENT_KEY_HOUSE_ID) { type = NavType.IntType })
+            arguments = listOf(navArgument(HouseDestination.HouseDetail.ARGUMENT_KEY_HOUSE_ID) {
+                type = NavType.StringType
+            })
         ) { backStackEntry ->
-            val houseId = backStackEntry.arguments!!.getInt(HouseDestination.HouseDetail.ARGUMENT_KEY_HOUSE_ID)
-            HouseDetailView(houseId)
+            val houseId = backStackEntry.arguments!!.getString(HouseDestination.HouseDetail.ARGUMENT_KEY_HOUSE_ID)
+            HouseDetailView(
+                houseId = houseId!!
+            )
         }
     }
 }
