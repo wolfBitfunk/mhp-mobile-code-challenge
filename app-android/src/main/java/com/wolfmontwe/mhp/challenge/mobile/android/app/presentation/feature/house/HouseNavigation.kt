@@ -28,10 +28,12 @@ fun NavGraphBuilder.addHouseNavigation(
         }
         composable(
             route = HouseDestination.HouseDetail.route,
-            arguments = listOf(navArgument(HouseDestination.HouseDetail.ARGUMENT_KEY_HOUSE_ID) { type = NavType.IntType })
+            arguments = listOf(navArgument(HouseDestination.HouseDetail.ARGUMENT_KEY_HOUSE_ID) {
+                type = NavType.StringType
+            })
         ) { backStackEntry ->
-            val houseId = backStackEntry.arguments!!.getInt(HouseDestination.HouseDetail.ARGUMENT_KEY_HOUSE_ID)
-            HouseDetailView(houseId)
+            val houseId = backStackEntry.arguments!!.getString(HouseDestination.HouseDetail.ARGUMENT_KEY_HOUSE_ID)
+            HouseDetailView(houseId!!)
         }
     }
 }

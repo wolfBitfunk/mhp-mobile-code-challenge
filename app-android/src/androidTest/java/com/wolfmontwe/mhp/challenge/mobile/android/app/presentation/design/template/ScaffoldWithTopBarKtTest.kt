@@ -54,7 +54,7 @@ class ScaffoldWithTopBarKtTest {
 
         // THEN
         view.assertIsDisplayed()
-            .assertScreenshotMatches("template", testTagName, true)
+            .assertScreenshotMatches("template", testTagName)
     }
 
     companion object {

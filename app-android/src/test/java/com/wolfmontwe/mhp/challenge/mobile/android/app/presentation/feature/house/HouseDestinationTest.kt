@@ -49,7 +49,7 @@ internal class HouseDestinationTest {
         HouseDestination.HouseList.targetRoute() mustEqual "${rootRoute}/list"
 
         HouseDestination.HouseDetail isOfType NavigationContract.NavigateWithArgument::class
-        HouseDestination.HouseDetail.targetRoute(123) mustEqual "${rootRoute}/detail/123"
+        HouseDestination.HouseDetail.targetRoute("123") mustEqual "${rootRoute}/detail/123"
     }
 
     @Test
