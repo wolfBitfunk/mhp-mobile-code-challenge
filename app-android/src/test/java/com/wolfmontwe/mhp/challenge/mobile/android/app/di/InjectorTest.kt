@@ -45,6 +45,10 @@ class InjectorTest {
             illegal = testSubject.domain.useCaseGetHousesPaginated,
             actual = testSubject.domain.useCaseGetHousesPaginated,
         )
+        assertNotSame(
+            illegal = testSubject.domain.useCaseGetHouseById,
+            actual = testSubject.domain.useCaseGetHouseById,
+        )
     }
 
     private companion object {
@@ -58,6 +62,7 @@ class InjectorTest {
         )
 
         val DOMAIN_ALLOWED_MEMBER_NAMES = listOf(
+            "useCaseGetHouseById",
             "useCaseGetHousesPaginated",
 
             // defaults

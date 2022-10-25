@@ -18,6 +18,7 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.data.network.JsonParser
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.Repository
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.Service
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.UseCase
+import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.GetHouseByIdUseCase
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.GetHousesPaginatedUseCase
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.PaginationService
 
@@ -30,6 +31,10 @@ object Injector : DiContract {
             get() = GetHousesPaginatedUseCase(
                 repository = Internal.Data.repositoryHouses,
                 pagination = Internal.Domain.servicePagination,
+            )
+        override val useCaseGetHouseById: UseCase.GetHouseById
+            get() = GetHouseByIdUseCase(
+                repository = Internal.Data.repositoryHouses,
             )
     }
 
