@@ -7,10 +7,13 @@ package com.wolfmontwe.mhp.challenge.mobile.android.app.domain
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.UseCase
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Failure
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Success
+import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.HouseTestFixture
+import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.Identifier
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
+import java.io.IOException
 
 import kotlin.test.Test
 
@@ -71,5 +74,35 @@ class GetHousesPaginatedUseCaseTest {
 
         // THEN
         paginationServiceMock.recordedReset mustEqual true
+    }
+
+    @Test
+    fun `SHOULD return failure WHEN repository fails`() = runTest {
+        // GIVEN
+        val answerGetHouses = Failure(IOException("Repository failed"))
+        repositoryMock.answerGetHouses = { answerGetHouses }
+
+        // WHEN
+        val result = testSubject.getHouses()
+
+        // THEN
+        result isOfType Failure::class
+        result as Failure
+        result mustEqual answerGetHouses
+    }
+
+    @Test
+    fun `SHOULD return success`() = runTest {
+        // GIVEN
+        val answerGetHouses = Success(listOf(HouseTestFixture.EXAMPLE))
+        repositoryMock.answerGetHouses = { answerGetHouses }
+
+        // WHEN
+        val result = testSubject.getHouses()
+
+        // THEN
+        result isOfType Success::class
+        result as Success
+        result mustEqual answerGetHouses
     }
 }

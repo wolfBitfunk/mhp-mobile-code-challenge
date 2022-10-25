@@ -8,6 +8,7 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.Rep
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Success
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.HouseTestFixture
+import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.Identifier
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -27,7 +28,7 @@ class HousesRepositoryTest {
     }
 
     @Test
-    fun `SHOULD use remote data source`() = runTest {
+    fun `SHOULD use remote data source FOR getHouses`() = runTest {
         // GIVEN
         val page = 2
         val pageSize = 3
@@ -44,7 +45,22 @@ class HousesRepositoryTest {
     }
 
     @Test
-    fun `SHOULD return success`() = runTest {
+    fun `SHOULD use remote data source FOR getHouse`() = runTest {
+        // GIVEN
+        val identifier = Identifier("2")
+        val remoteAnswer = Result.success(HouseTestFixture.EXAMPLE)
+        remoteDataSource.answerGetHouse = { remoteAnswer }
+
+        // WHEN
+        val result = testSubject.getHouse(identifier)
+
+        // THEN
+        result isOfType Success::class
+        remoteDataSource.recordedIdentifier mustEqual identifier
+    }
+
+    @Test
+    fun `SHOULD return success FOR getHouses`() = runTest {
         // GIVEN
         val page = 2
         val pageSize = 3
@@ -53,6 +69,22 @@ class HousesRepositoryTest {
 
         // WHEN
         val result = testSubject.getHouses(page = page, pageSize = pageSize)
+
+        // THEN
+        result isOfType Success::class
+        result as Success
+        result mustEqual remoteAnswer
+    }
+
+    @Test
+    fun `SHOULD return success FOR getHouse`() = runTest {
+        // GIVEN
+        val identifier = Identifier("5")
+        val remoteAnswer = Result.success(HouseTestFixture.EXAMPLE)
+        remoteDataSource.answerGetHouse = { remoteAnswer }
+
+        // WHEN
+        val result = testSubject.getHouse(identifier)
 
         // THEN
         result isOfType Success::class

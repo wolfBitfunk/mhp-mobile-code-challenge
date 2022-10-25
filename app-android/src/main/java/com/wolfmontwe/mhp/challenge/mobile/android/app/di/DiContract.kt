@@ -17,6 +17,7 @@ interface DiContract {
 
     interface Domain {
         val useCaseGetHousesPaginated: UseCase.GetHousesPaginated
+        val useCaseGetHouseById: UseCase.GetHouseById
     }
 
     interface Internal {

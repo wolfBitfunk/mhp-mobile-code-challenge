@@ -19,6 +19,7 @@ interface DataContract {
         interface Houses {
             interface Remote {
                 suspend fun getHouses(page: Int, pageSize: Int): Result<List<House>>
+                suspend fun getHouse(identifier: Identifier): Result<House>
             }
         }
     }
@@ -38,13 +39,13 @@ interface DataContract {
 
         interface IceAndFireApi {
             suspend fun loadHouses(page: Int, pageSize: Int): Result<List<HouseResponse>>
-            suspend fun loadHouse(id: Int): Result<HouseResponse>
+            suspend fun loadHouse(id: String): Result<HouseResponse>
 
             suspend fun loadCharacters(page: Int, pageSize: Int): Result<List<CharacterResponse>>
-            suspend fun loadCharacter(id: Int): Result<CharacterResponse>
+            suspend fun loadCharacter(id: String): Result<CharacterResponse>
 
             suspend fun loadBooks(page: Int, pageSize: Int): Result<List<BookResponse>>
-            suspend fun loadBook(id: Int): Result<BookResponse>
+            suspend fun loadBook(id: String): Result<BookResponse>
         }
 
         interface HttpClient {
