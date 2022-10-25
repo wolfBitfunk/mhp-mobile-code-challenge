@@ -19,6 +19,7 @@ interface DataContract {
         interface Houses {
             interface Remote {
                 suspend fun getHouses(page: Int, pageSize: Int): Result<List<House>>
+                suspend fun getHouse(identifier: Identifier): Result<House>
             }
         }
     }
