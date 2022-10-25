@@ -16,10 +16,17 @@ class IceAndFireApiMock : Network.IceAndFireApi {
         throw IllegalArgumentException("answerLoadHouses not defined")
     }
 
+    var answerLoadHouse: () -> Result<HouseResponse> = {
+        throw IllegalArgumentException("answerLoadHouse not defined")
+    }
+
     var recordedHousesPage: Int = -1
         private set
 
     var recordedHousesPageSize: Int = -1
+        private set
+
+    var recordedHouseId: String? = null
         private set
 
     override suspend fun loadHouses(page: Int, pageSize: Int): Result<List<HouseResponse>> {
@@ -28,15 +35,16 @@ class IceAndFireApiMock : Network.IceAndFireApi {
         return answerLoadHouses()
     }
 
-    override suspend fun loadHouse(id: Int): Result<HouseResponse> {
-        TODO("Not yet implemented")
+    override suspend fun loadHouse(id: String): Result<HouseResponse> {
+        recordedHouseId = id
+        return answerLoadHouse()
     }
 
     override suspend fun loadCharacters(page: Int, pageSize: Int): Result<List<CharacterResponse>> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun loadCharacter(id: Int): Result<CharacterResponse> {
+    override suspend fun loadCharacter(id: String): Result<CharacterResponse> {
         TODO("Not yet implemented")
     }
 
@@ -44,7 +52,7 @@ class IceAndFireApiMock : Network.IceAndFireApi {
         TODO("Not yet implemented")
     }
 
-    override suspend fun loadBook(id: Int): Result<BookResponse> {
+    override suspend fun loadBook(id: String): Result<BookResponse> {
         TODO("Not yet implemented")
     }
 }

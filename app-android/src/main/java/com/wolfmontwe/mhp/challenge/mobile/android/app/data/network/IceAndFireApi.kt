@@ -23,7 +23,7 @@ class IceAndFireApi(
         return load(url) { jsonParser.parseHouses(it) }
     }
 
-    override suspend fun loadHouse(id: Int): Result<HouseResponse> {
+    override suspend fun loadHouse(id: String): Result<HouseResponse> {
         val url = URL("$URL_API_HOUSES/$id")
         return load(url) { jsonParser.parseHouse(it) }
     }
@@ -33,7 +33,7 @@ class IceAndFireApi(
         return load(url) { jsonParser.parseCharacters(it) }
     }
 
-    override suspend fun loadCharacter(id: Int): Result<CharacterResponse> {
+    override suspend fun loadCharacter(id: String): Result<CharacterResponse> {
         val url = URL("$URL_API_CHARACTERS/$id")
         return load(url) { jsonParser.parseCharacter(it) }
     }
@@ -43,7 +43,7 @@ class IceAndFireApi(
         return load(url) { jsonParser.parseBooks(it) }
     }
 
-    override suspend fun loadBook(id: Int): Result<BookResponse> {
+    override suspend fun loadBook(id: String): Result<BookResponse> {
         val url = URL("$URL_API_BOOKS/$id")
         return load(url) { jsonParser.parseBook(it) }
     }

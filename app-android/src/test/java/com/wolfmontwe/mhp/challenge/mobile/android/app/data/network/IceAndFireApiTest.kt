@@ -39,19 +39,19 @@ internal class IceAndFireApiTest {
         testSubject.loadHouses(page = page, pageSize = pageSize)
         httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/houses?page=$page&pageSize=$pageSize")
 
-        testSubject.loadHouse(1)
+        testSubject.loadHouse("1")
         httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/houses/1")
 
         testSubject.loadCharacters(page = page, pageSize = pageSize)
         httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/characters?page=$page&pageSize=$pageSize")
 
-        testSubject.loadCharacter(1)
+        testSubject.loadCharacter("1")
         httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/characters/1")
 
         testSubject.loadBooks(page = page, pageSize = pageSize)
         httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/books?page=$page&pageSize=$pageSize")
 
-        testSubject.loadBook(1)
+        testSubject.loadBook("1")
         httpClientMock.recordedUrl mustEqual URL("https://anapioficeandfire.com/api/books/1")
     }
 
@@ -64,13 +64,13 @@ internal class IceAndFireApiTest {
 
         // WHEN/THEN
         testSubject.loadHouses(page = page, pageSize = pageSize) isOfType Failure::class
-        testSubject.loadHouse(1) isOfType Failure::class
+        testSubject.loadHouse("1") isOfType Failure::class
 
         testSubject.loadCharacters(page = page, pageSize = pageSize) isOfType Failure::class
-        testSubject.loadCharacter(1) isOfType Failure::class
+        testSubject.loadCharacter("1") isOfType Failure::class
 
         testSubject.loadBooks(page = page, pageSize = pageSize) isOfType Failure::class
-        testSubject.loadBook(1) isOfType Failure::class
+        testSubject.loadBook("1") isOfType Failure::class
     }
 
     @Test
@@ -84,7 +84,7 @@ internal class IceAndFireApiTest {
         jsonParserMock.recordedJson mustEqual "loadHouses"
 
         httpClientMock.answerGet = { "loadHouse" }
-        testSubject.loadHouse(1)
+        testSubject.loadHouse("1")
         jsonParserMock.recordedJson mustEqual "loadHouse"
 
         httpClientMock.answerGet = { "loadCharacters" }
@@ -92,7 +92,7 @@ internal class IceAndFireApiTest {
         jsonParserMock.recordedJson mustEqual "loadCharacters"
 
         httpClientMock.answerGet = { "loadCharacter" }
-        testSubject.loadCharacter(1)
+        testSubject.loadCharacter("1")
         jsonParserMock.recordedJson mustEqual "loadCharacter"
 
         httpClientMock.answerGet = { "loadBooks" }
@@ -100,7 +100,7 @@ internal class IceAndFireApiTest {
         jsonParserMock.recordedJson mustEqual "loadBooks"
 
         httpClientMock.answerGet = { "loadBook" }
-        testSubject.loadBook(1)
+        testSubject.loadBook("1")
         jsonParserMock.recordedJson mustEqual "loadBook"
     }
 
@@ -114,13 +114,13 @@ internal class IceAndFireApiTest {
 
         // WHEN/THEN
         testSubject.loadHouses(page = page, pageSize = pageSize) isOfType Failure::class
-        testSubject.loadHouse(1) isOfType Failure::class
+        testSubject.loadHouse("1") isOfType Failure::class
 
         testSubject.loadCharacters(page = page, pageSize = pageSize) isOfType Failure::class
-        testSubject.loadCharacter(1) isOfType Failure::class
+        testSubject.loadCharacter("1") isOfType Failure::class
 
         testSubject.loadBooks(page = page, pageSize = pageSize) isOfType Failure::class
-        testSubject.loadBook(1) isOfType Failure::class
+        testSubject.loadBook("1") isOfType Failure::class
     }
 
     @Test
@@ -147,7 +147,7 @@ internal class IceAndFireApiTest {
         jsonParserMock.answerParseHouse = { HouseResponseTestFixture.EXAMPLE }
 
         // WHEN
-        val result = testSubject.loadHouse(1)
+        val result = testSubject.loadHouse("1")
 
         // THEN
         result isOfType Success::class
@@ -179,7 +179,7 @@ internal class IceAndFireApiTest {
         jsonParserMock.answerParseCharacter = { CharacterResponseTestFixture.EXAMPLE }
 
         // WHEN
-        val result = testSubject.loadCharacter(1)
+        val result = testSubject.loadCharacter("1")
 
         // THEN
         result isOfType Success::class
