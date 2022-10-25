@@ -18,6 +18,10 @@ interface DomainContract {
             suspend fun getHouses(): Result<List<House>>
             suspend fun reset()
         }
+
+        interface GetHouseById {
+            suspend fun getHouse(identifier: Identifier): Result<House>
+        }
     }
 
     interface Repository {
