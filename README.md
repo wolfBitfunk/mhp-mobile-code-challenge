@@ -10,11 +10,11 @@ The solution was written using [Android Studio Dolphin | 2021.3.1 Patch 1](https
 
 The App is developed using Clean Architecture to divide responsibilities into domain, data and presentation layers.
 
-The domain layer avoids all external dependencies and is uses by the other layers.
+The domain layer avoids all external dependencies and is used by the other layers.
 
 The data layer follows Googles DataSource approach with remote and local differentiation. This solution provides only the remote part.
 
-The presentation layer follows MVVM and introduces Atomic Design for the Composable views. Material 3 is used as a base design system. Navigation implemented using Compose Navigation. Composable views are tested via instrumentation and screenshots.
+The presentation layer follows MVVM and introduces Atomic Design for the Composable views. Material 3 is used as a base design system. Navigation is implemented using Compose Navigation. Composable views are tested via instrumentation and screenshot tests.
 
 An Injector is used to provide dependencies as constructor parameters. 
 
