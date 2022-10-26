@@ -42,8 +42,8 @@ fun HouseListContent(
             }
             HouseCardItem(house = item, onClick = { onClickHouse(item.id.value) })
         }
-        if (isLoading) {
-            item {
+        item {
+            if (isLoading) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()

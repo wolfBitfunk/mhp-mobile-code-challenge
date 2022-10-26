@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="house_list_screen_title">Houses of Game of Thrones</string>
-    <string name="house_detail_screen_title">House of %1$s</string>
+    <string name="house_detail_screen_title">House %1$s</string>
 </resources>

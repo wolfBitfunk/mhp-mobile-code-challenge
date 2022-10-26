@@ -9,6 +9,8 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.Identifier
 
 object HouseTestFixture {
 
+    val EXAMPLE_ID = "378"
+
     val EXAMPLE = House(
         id = Identifier("378"),
         name = "House Targaryen of King's Landing",
