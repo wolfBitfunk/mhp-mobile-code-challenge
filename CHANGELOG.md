@@ -26,6 +26,7 @@ See [changeset](https://github.com/wmontwe/mhp-mobile-challenge-android/compare/
 - House list view
 - GetHouseById use case
 - House detail view
+- App icon
 
 ### Changed
 
