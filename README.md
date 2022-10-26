@@ -10,7 +10,15 @@ The solution was written using [Android Studio Dolphin | 2021.3.1 Patch 1](https
 
 ## Usage
 
-TODO
+The screenshot tests are screen density dependent. So calling `./gradlew connectedCheck` might fail if the device density is different to the one they have been taken. They have been created for my phone and a Pixel XL 5.5" emulator.
+
+### Create new screenshot for desired device density:
+
+Open `ComposeTestScreenshot.kt` in folder `app-android/src/androidTest/java/com/wolfmontwe/mhp/challenge/mobile/android/app/test/compose/` and change `saveAsExpected = true`
+
+Then run `./gradlew connectedCheck` to generate the screenshots and `./copy_screenshot.sh` to copy them in the project androidTest assets folder.
+
+Disable the flat and run again.
 
 ## Changelog
 
