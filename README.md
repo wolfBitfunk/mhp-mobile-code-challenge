@@ -1,3 +1,5 @@
+![Logo](assets/logo.png)
+
 # MHP - Mobile-App Coding Challenge
 
 Android App as solution for the [Mobile-App Coding Challenge](https://github.com/MHP-A-Porsche-Company/coding-challenges/blob/master/Mobile/README.md)
