@@ -10,7 +10,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.detail.HouseDetailView
+import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.detail.HouseDetailScreen
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.list.HouseListScreen
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.navigation.RootDestination
 
@@ -35,7 +35,7 @@ fun NavGraphBuilder.addHouseNavigation(
             })
         ) { backStackEntry ->
             val houseId = backStackEntry.arguments!!.getString(HouseDestination.HouseDetail.ARGUMENT_KEY_HOUSE_ID)
-            HouseDetailView(
+            HouseDetailScreen(
                 houseId = houseId!!
             )
         }

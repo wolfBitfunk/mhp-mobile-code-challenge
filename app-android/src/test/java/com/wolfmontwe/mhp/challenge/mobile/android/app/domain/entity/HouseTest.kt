@@ -11,10 +11,7 @@ import kotlin.test.Test
 
 class HouseTest {
 
-    private val testSubject = House(
-        id = Identifier("123"),
-        name = "HouseName"
-    )
+    private val testSubject = HouseTestFixture.EXAMPLE
 
     @Test
     fun `SHOULD implement contract`() {

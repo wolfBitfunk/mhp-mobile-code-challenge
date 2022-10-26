@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="house_list_screen_title">Houses of Game of Thrones</string>
-    <string name="house_detail_screen_title">House of %1$s</string>
+    <string name="house_detail_screen_title">House %1$s</string>
+    <string name="house_detail_content_row_label_name">Name</string>
+    <string name="house_detail_content_row_label_region">Region</string>
+    <string name="house_detail_content_row_label_coat_of_arms">Coat of arms</string>
+    <string name="house_detail_content_row_label_words">Words</string>
+    <string name="house_detail_content_row_label_titles">Titles</string>
+    <string name="house_detail_content_row_label_seats">Seats</string>
+    <string name="house_detail_content_row_label_members">Members</string>
+    <string name="house_detail_content_row_label_founded">Founded</string>
+    <string name="house_detail_content_row_text_not_available">N/A</string>
+    <string name="house_detail_content_row_text_no_titles">N/A</string>
+    <string name="house_detail_content_row_text_no_seats">N/A</string>
 </resources>

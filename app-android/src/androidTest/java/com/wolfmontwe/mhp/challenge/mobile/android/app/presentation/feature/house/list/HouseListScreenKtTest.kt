@@ -14,11 +14,10 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.runComposeUiTest
 import com.wolfmontwe.mhp.challenge.mobile.android.app.R
-import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
-import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.Identifier
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.assertScreenshotMatches
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.setThemedContent
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.setThemedScreenshotContent
+import com.wolfmontwe.mhp.challenge.mobile.android.app.test.fixture.HouseTestFixture
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
 import org.junit.Test
 
@@ -29,13 +28,8 @@ class HouseListScreenKtTest {
     fun should_show_content() = runComposeUiTest {
         // GIVEN
         val viewModel = HouseListViewModelMock(
-            HouseListViewState(
-                items = listOf(
-                    House(
-                        id = Identifier("123"),
-                        name = "HouseName"
-                    )
-                )
+            initialViewState = HouseListViewState(
+                items = HouseTestFixture.EXAMPLE_LIST
             )
         )
 
@@ -60,7 +54,9 @@ class HouseListScreenKtTest {
         // GIVEN
         lateinit var errorTitle: String
         val errorMessage = "This is a Bug"
-        val viewModel = HouseListViewModelMock(HouseListViewState(error = errorMessage))
+        val viewModel = HouseListViewModelMock(
+            initialViewState = HouseListViewState(error = errorMessage)
+        )
 
         setThemedContent {
             errorTitle = stringResource(id = R.string.error_item_title)
@@ -118,12 +114,7 @@ class HouseListScreenKtTest {
         // GIVEN
         val viewModel = HouseListViewModelMock(
             HouseListViewState(
-                items = listOf(
-                    House(
-                        id = Identifier("123"),
-                        name = "HouseName"
-                    )
-                )
+                items = HouseTestFixture.EXAMPLE_LIST
             )
         )
 

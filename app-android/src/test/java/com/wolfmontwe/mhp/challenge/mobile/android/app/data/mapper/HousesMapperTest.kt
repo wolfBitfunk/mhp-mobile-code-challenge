@@ -75,6 +75,22 @@ class HousesMapperTest {
     }
 
     @Test
+    fun `SHOULD map to domain object and remove empty list entries`() {
+        // GIVEN
+        val houseResponse = HouseResponseTestFixture.EXAMPLE_EMPTY_LISTS
+        val mapperAnswer = Result.success(HouseTestFixture.EXAMPLE.id)
+        idMapperMock.answerMapToDomainObject = { mapperAnswer }
+
+        // WHEN
+        val result = testSubject.mapToDomain(houseResponse)
+
+        // THEN
+        result isOfType Success::class
+        result as Success
+        result.data mustEqual HouseTestFixture.EXAMPLE_EMPTY_LISTS
+    }
+
+    @Test
     fun `SHOULD map to domain list`() {
         // GIVEN
         val houseResponses = listOf(

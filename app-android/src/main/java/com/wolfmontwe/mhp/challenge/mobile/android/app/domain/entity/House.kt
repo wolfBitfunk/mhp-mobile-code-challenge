@@ -9,4 +9,11 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.Ent
 data class House(
     override val id: Identifier,
     val name: String,
+    val region: String,
+    val coatOfArms: String,
+    val words: String,
+    val titles: List<String>,
+    val seats: List<String>,
+    val members: Int,
+    val founded: String,
 ) : Entity

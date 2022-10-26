@@ -25,6 +25,7 @@ See [changeset](https://github.com/wmontwe/mhp-mobile-challenge-android/compare/
 - Dependency injection via custom injector
 - House list view
 - GetHouseById use case
+- House detail view
 
 ### Changed
 

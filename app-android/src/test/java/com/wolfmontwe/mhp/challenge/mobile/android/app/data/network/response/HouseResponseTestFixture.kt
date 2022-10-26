@@ -329,4 +329,9 @@ object HouseResponseTestFixture {
             "https://anapioficeandfire.com/api/characters/2128"
         )
     )
+
+    val EXAMPLE_EMPTY_LISTS = EXAMPLE.copy(
+        titles = listOf("", "", ""),
+        seats = listOf(""),
+    )
 }
