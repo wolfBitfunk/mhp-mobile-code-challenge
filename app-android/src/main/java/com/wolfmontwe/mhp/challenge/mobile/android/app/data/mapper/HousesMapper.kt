@@ -29,7 +29,14 @@ class HousesMapper(
             Result.success(
                 House(
                     id = identifier,
-                    name = from.name
+                    name = from.name,
+                    region = from.region,
+                    coatOfArms = from.coatOfArms,
+                    words = from.words,
+                    titles = from.titles.filter { it.isNotEmpty() },
+                    seats = from.seats.filter { it.isNotEmpty() },
+                    members = from.swornMembers.filter { it.isNotEmpty() }.size,
+                    founded = from.founded,
                 )
             )
         } catch (exception: Exception) {

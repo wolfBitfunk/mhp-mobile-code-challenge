@@ -14,8 +14,6 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.runComposeUiTest
 import com.wolfmontwe.mhp.challenge.mobile.android.app.R
-import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
-import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.Identifier
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.assertScreenshotMatches
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.setThemedContent
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.compose.setThemedScreenshotContent
@@ -116,12 +114,7 @@ class HouseListScreenKtTest {
         // GIVEN
         val viewModel = HouseListViewModelMock(
             HouseListViewState(
-                items = listOf(
-                    House(
-                        id = Identifier("123"),
-                        name = "HouseName"
-                    )
-                )
+                items = HouseTestFixture.EXAMPLE_LIST
             )
         )
 

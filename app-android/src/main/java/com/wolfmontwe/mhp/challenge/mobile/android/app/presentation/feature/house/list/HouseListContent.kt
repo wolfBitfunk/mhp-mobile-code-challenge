@@ -74,8 +74,15 @@ fun HouseListContentPreview() {
             items = listOf(
                 House(
                     id = Identifier("123"),
-                    name = "House Test"
-                )
+                    name = "TestName",
+                    region = "TestRegion",
+                    coatOfArms = "TestCoatOfArms",
+                    words = "TestWords",
+                    titles = listOf("TestTitle1", "TestTitle2"),
+                    seats = listOf("TestSeat1", "TestSeat2"),
+                    members = 11,
+                    founded = "TestFounded"
+                ),
             ),
             isLoading = true,
             onClickHouse = {},

@@ -123,6 +123,6 @@ class HouseDetailScreenKtTest {
 
         // THEN
         view.assertIsDisplayed()
-            .assertScreenshotMatches("feature", "HouseDetailScreenError", true)
+            .assertScreenshotMatches("feature", "HouseDetailScreenError")
     }
 }

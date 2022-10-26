@@ -34,12 +34,51 @@ fun HouseDetailContent(
             .then(modifier)
             .testTag("HouseDetailContent"),
     ) {
-        if (house != null)
+        if (house != null) {
             HouseDetailContentRowItem(
                 label = stringResource(id = R.string.house_detail_content_row_label_name),
                 text = house.name.substringAfter("House ")
             )
-        else {
+            HouseDetailContentRowItem(
+                label = stringResource(id = R.string.house_detail_content_row_label_region),
+                text = house.region
+            )
+            HouseDetailContentRowItem(
+                label = stringResource(id = R.string.house_detail_content_row_label_coat_of_arms),
+                text = house.coatOfArms
+                    .ifEmpty { stringResource(id = R.string.house_detail_content_row_text_not_available) }
+            )
+            HouseDetailContentRowItem(
+                label = stringResource(id = R.string.house_detail_content_row_label_words),
+                text = house.words
+                    .ifEmpty { stringResource(id = R.string.house_detail_content_row_text_not_available) }
+            )
+            val titles = if (house.titles.isEmpty()) {
+                stringResource(id = R.string.house_detail_content_row_text_no_titles)
+            } else {
+                house.titles.joinToString("\n")
+            }
+            HouseDetailContentRowItem(
+                label = stringResource(id = R.string.house_detail_content_row_label_titles),
+                text = titles
+            )
+            HouseDetailContentRowItem(
+                label = stringResource(id = R.string.house_detail_content_row_label_seats),
+                text = (
+                    if (house.seats.isNotEmpty()) house.seats.joinToString("\n")
+                    else stringResource(id = R.string.house_detail_content_row_text_no_seats)
+                    )
+            )
+            HouseDetailContentRowItem(
+                label = stringResource(id = R.string.house_detail_content_row_label_members),
+                text = "${house.members}"
+            )
+            HouseDetailContentRowItem(
+                label = stringResource(id = R.string.house_detail_content_row_label_founded),
+                text = house.founded
+                    .ifEmpty { stringResource(id = R.string.house_detail_content_row_text_not_available) }
+            )
+        } else {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center
@@ -65,7 +104,14 @@ fun HouseDetailContentPreview() {
         HouseDetailContent(
             house = House(
                 id = Identifier("123"),
-                name = "House name"
+                name = "TestName",
+                region = "TestRegion",
+                coatOfArms = "TestCoatOfArms",
+                words = "TestWords",
+                titles = listOf("TestTitle1", "TestTitle2"),
+                seats = listOf("TestSeat1", "TestSeat2"),
+                members = 11,
+                founded = "TestFounded"
             ),
         )
     }

@@ -28,7 +28,7 @@ fun HouseDetailContentRowItem(
         LabelLarge(
             text = label,
             modifier = Modifier
-                .width(80.dp)
+                .width(96.dp)
                 .padding(end = MainThemeDimension.spacingSingle)
         )
         BodyLarge(text = text)
