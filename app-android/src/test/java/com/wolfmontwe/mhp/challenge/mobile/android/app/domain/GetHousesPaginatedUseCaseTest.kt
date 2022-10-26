@@ -8,13 +8,11 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.DomainContract.Use
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Failure
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result.Success
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.HouseTestFixture
-import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.Identifier
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import java.io.IOException
-
 import kotlin.test.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)

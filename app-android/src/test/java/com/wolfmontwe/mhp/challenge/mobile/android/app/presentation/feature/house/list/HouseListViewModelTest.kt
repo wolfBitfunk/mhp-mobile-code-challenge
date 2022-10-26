@@ -24,22 +24,21 @@ class HouseListViewModelTest {
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
-    private lateinit var useCaseGetHousesPaginated: GetHousesPaginatedUseCaseMock
-
     private lateinit var collectedStateFlows: MutableList<HouseListViewState>
+
+    private lateinit var useCaseGetHousesPaginatedMock: GetHousesPaginatedUseCaseMock
 
     private lateinit var testSubject: HouseListViewModel
 
     @BeforeTest
     fun setup() {
-        useCaseGetHousesPaginated = GetHousesPaginatedUseCaseMock()
-        useCaseGetHousesPaginated.answerGetHouses = { HouseTestFixture.RESULT_SUCCESS_EXAMPLE_LIST }
+        useCaseGetHousesPaginatedMock = GetHousesPaginatedUseCaseMock()
+        useCaseGetHousesPaginatedMock.answerGetHouses = { HouseTestFixture.RESULT_SUCCESS_EXAMPLE_LIST }
 
         collectedStateFlows = mutableListOf()
 
-
         testSubject = HouseListViewModel(
-            useCaseGetHousesPaginated = useCaseGetHousesPaginated,
+            useCaseGetHousesPaginated = useCaseGetHousesPaginatedMock,
             ioDispatcher = mainDispatcherRule.testDispatcher
         )
     }
@@ -66,7 +65,7 @@ class HouseListViewModelTest {
     @Test
     fun `SHOULD set error state WHEN use case fails`() = runTestWithStateRecording {
         // GIVEN
-        useCaseGetHousesPaginated.answerGetHouses = { Result.failure(IOException("useCaseGetHousesPaginated failed")) }
+        useCaseGetHousesPaginatedMock.answerGetHouses = { Result.failure(IOException("useCaseGetHousesPaginated failed")) }
         val initialState = STATE_AFTER_INIT
         val loadingState = initialState.copy(isLoading = true)
         val errorState = loadingState.copy(error = "useCaseGetHousesPaginated failed")
@@ -81,13 +80,13 @@ class HouseListViewModelTest {
         collectedStateFlows[1] mustEqual loadingState
         collectedStateFlows[2] mustEqual errorState
         collectedStateFlows[3] mustEqual endState
-        useCaseGetHousesPaginated.recordedGetHouses mustEqual true
+        useCaseGetHousesPaginatedMock.recordedGetHouses mustEqual true
     }
 
     @Test
     fun `SHOULD set success state WHEN use case run`() = runTestWithStateRecording {
         // GIVEN
-        useCaseGetHousesPaginated.answerGetHouses = { HouseTestFixture.RESULT_SUCCESS_EXAMPLE_LIST }
+        useCaseGetHousesPaginatedMock.answerGetHouses = { HouseTestFixture.RESULT_SUCCESS_EXAMPLE_LIST }
         val initialState = STATE_AFTER_INIT
         val loadingState = initialState.copy(isLoading = true)
         val successState = loadingState.copy(items = loadingState.items + HouseTestFixture.EXAMPLE_LIST)
@@ -102,13 +101,13 @@ class HouseListViewModelTest {
         collectedStateFlows[1] mustEqual loadingState
         collectedStateFlows[2] mustEqual successState
         collectedStateFlows[3] mustEqual endState
-        useCaseGetHousesPaginated.recordedGetHouses mustEqual true
+        useCaseGetHousesPaginatedMock.recordedGetHouses mustEqual true
     }
 
     @Test
     fun `SHOULD set isPagingEnd WHEN empty use case result`() = runTestWithStateRecording {
         // GIVEN
-        useCaseGetHousesPaginated.answerGetHouses = { Result.success(emptyList()) }
+        useCaseGetHousesPaginatedMock.answerGetHouses = { Result.success(emptyList()) }
         val initialState = STATE_AFTER_INIT
         val loadingState = initialState.copy(isLoading = true)
         val pageEndState = loadingState.copy(isPagingEnd = true)
@@ -123,7 +122,7 @@ class HouseListViewModelTest {
         collectedStateFlows[1] mustEqual loadingState
         collectedStateFlows[2] mustEqual pageEndState
         collectedStateFlows[3] mustEqual endState
-        useCaseGetHousesPaginated.recordedGetHouses mustEqual true
+        useCaseGetHousesPaginatedMock.recordedGetHouses mustEqual true
     }
 
     @Test
@@ -138,7 +137,7 @@ class HouseListViewModelTest {
 
         // THEN
         collectedStateFlows.size mustEqual 1
-        useCaseGetHousesPaginated.recordedGetHouses mustEqual false
+        useCaseGetHousesPaginatedMock.recordedGetHouses mustEqual false
     }
 
     @Test
@@ -153,7 +152,7 @@ class HouseListViewModelTest {
 
         // THEN
         collectedStateFlows.size mustEqual 1
-        useCaseGetHousesPaginated.recordedGetHouses mustEqual false
+        useCaseGetHousesPaginatedMock.recordedGetHouses mustEqual false
     }
 
     @Test
@@ -174,7 +173,7 @@ class HouseListViewModelTest {
         collectedStateFlows.size mustEqual 2
         collectedStateFlows[0] mustEqual initialState
         collectedStateFlows[1] mustEqual resetState
-        useCaseGetHousesPaginated.recordedReset mustEqual true
+        useCaseGetHousesPaginatedMock.recordedReset mustEqual true
     }
 
     private fun runTestWithStateRecording(executeTest: TestScope.() -> Unit) = runTestWithStateFlowCollector(
@@ -187,7 +186,7 @@ class HouseListViewModelTest {
         initialViewState: HouseListViewState = HouseListViewState(),
     ): HouseListViewModel {
         return HouseListViewModel(
-            useCaseGetHousesPaginated = GetHousesPaginatedUseCaseMock().also { useCaseGetHousesPaginated = it },
+            useCaseGetHousesPaginated = GetHousesPaginatedUseCaseMock().also { useCaseGetHousesPaginatedMock = it },
             ioDispatcher = mainDispatcherRule.testDispatcher,
             initialViewState = initialViewState
         )
