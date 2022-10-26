@@ -16,7 +16,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.wolfmontwe.mhp.challenge.mobile.android.app.R.string
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.organism.ErrorItem
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.design.template.ScaffoldWithTopBar
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.list.HouseListContract
 import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.theme.MainTheme
 
 @Composable

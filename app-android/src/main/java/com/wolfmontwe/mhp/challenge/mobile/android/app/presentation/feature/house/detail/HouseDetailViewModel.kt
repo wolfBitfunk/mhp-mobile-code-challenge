@@ -12,7 +12,6 @@ import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.House
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.Identifier
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.map
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.list.HouseListViewState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

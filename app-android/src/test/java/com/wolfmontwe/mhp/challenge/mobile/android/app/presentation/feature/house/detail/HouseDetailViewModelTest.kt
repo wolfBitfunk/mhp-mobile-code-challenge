@@ -5,12 +5,9 @@
 package com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.detail
 
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.GetHouseByIdMock
-import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.GetHousesPaginatedUseCaseMock
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.Result
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.HouseTestFixture
 import com.wolfmontwe.mhp.challenge.mobile.android.app.domain.entity.Identifier
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.list.HouseListViewModel
-import com.wolfmontwe.mhp.challenge.mobile.android.app.presentation.feature.house.list.HouseListViewState
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.MainDispatcherRule
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.isOfType
 import com.wolfmontwe.mhp.challenge.mobile.android.app.test.mustEqual

@@ -65,7 +65,8 @@ class HouseListViewModelTest {
     @Test
     fun `SHOULD set error state WHEN use case fails`() = runTestWithStateRecording {
         // GIVEN
-        useCaseGetHousesPaginatedMock.answerGetHouses = { Result.failure(IOException("useCaseGetHousesPaginated failed")) }
+        useCaseGetHousesPaginatedMock.answerGetHouses =
+            { Result.failure(IOException("useCaseGetHousesPaginated failed")) }
         val initialState = STATE_AFTER_INIT
         val loadingState = initialState.copy(isLoading = true)
         val errorState = loadingState.copy(error = "useCaseGetHousesPaginated failed")
