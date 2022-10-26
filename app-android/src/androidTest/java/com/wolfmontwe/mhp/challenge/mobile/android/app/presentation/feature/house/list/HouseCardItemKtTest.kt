@@ -61,7 +61,7 @@ class HouseCardItemKtTest {
 
         // THEN
         view.assertIsDisplayed()
-            .assertScreenshotMatches("feature", testTagName, false)
+            .assertScreenshotMatches("feature", testTagName)
     }
 
     private companion object {
