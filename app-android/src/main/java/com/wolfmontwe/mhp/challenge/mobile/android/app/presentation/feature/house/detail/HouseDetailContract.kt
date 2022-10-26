@@ -16,10 +16,10 @@ interface HouseDetailContract {
 
     interface ViewModelFactory : ViewModelProvider.Factory
 
-    data class ViewState(
-        val identifier: Identifier? = null,
-        val item: House? = null,
-        val isLoading: Boolean = false,
-        val error: String? = null,
-    )
+    interface ViewState {
+        val identifier: Identifier?
+        val item: House?
+        val isLoading: Boolean
+        val error: String?
+    }
 }
